@@ -1,0 +1,58 @@
+html {
+	overflow-y: scroll; 
+}
+
+#mainContent header {
+	padding-top: 1.0em;
+	min-height: 2.0em;
+	padding-bottom: 2.0em;
+}
+
+#mainContent header h2 {
+	font-size: 1.8em;
+	float: left;
+	width: 50%;
+	margin-left: 25%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#imgGoBack {
+	float: right;
+	width:5em;
+	background-color: #FFF;
+	margin-right: 0.5em;
+}
+
+#divGrafo {
+	width: 90%;
+	margin: auto;
+	padding: 1.0em;
+}
+
+#arrowsMoveGraph {
+	float: left;
+	width: 30%;
+	margin-left: 5%;
+	margin-top': 2.0em;
+}
+
+.arrow {
+	width: 3.0em;
+	margin: 1.0em;
+	margin-top: 0.3em;
+	cursor: pointer;
+}
+
+#buttonStopGame {
+	float: right;
+	width: 30%;
+	margin-top': 2.0em;
+}
+
+#divSliderSpeed h1 {
+	margin: 0em;
+	margin-bottom: 0.5em;
+	font-size: 1.5em;
+}
+

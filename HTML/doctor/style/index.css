@@ -1,0 +1,39 @@
+html {
+	overflow-y: scroll;
+}
+
+#mainContent header {
+	padding-top: 2em;
+	margin-bottom: 2.0em;
+}
+
+#welcomeDoctor {
+	float: left;
+	width: 50%;
+	margin-left: 5%;
+	text-align: left;
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #000;
+}
+
+#logout {
+	float: right;
+	width: 	5em;
+	margin-right: 5%;
+	cursor: pointer;
+}
+
+#sceltaOperazione {
+	width: 70%;
+	margin: auto;
+	padding-bottom: 2.0em;
+	text-align: center;
+}
+
+#sceltaOperazione button {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	font-size: 1.5em;
+	margin: 0.5em;
+}

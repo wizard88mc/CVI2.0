@@ -1,0 +1,180 @@
+#headerSettings {
+	width: 50%;
+	margin: auto;
+	font-size: 1.1em;
+}
+
+.divSetExercises {
+	width: 95%;
+	margin: auto;
+	margin-top: 1.5em;
+}
+
+.divLeft {
+	float: left;
+	width: 45%;
+	margin-left: 0.5em;
+}
+
+.divRight {
+	float: right;
+	width: 50%;
+	margin-top: 1.0em;
+}
+
+.inline_block {
+	display: inline-block;
+}
+
+.imgYesOrNo {
+	width: 10%;
+	margin-left: 0.7em;
+}
+
+#divDialogMovimenti label {
+	margin-left: 0.5em;
+}
+
+.smallLabel {
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+#divColoreSfondo, #divColoreImmagine, #divMovimenti, #divSpeed, #divDimensions {
+	margin-bottom: 1.0em;
+	padding-bottom: 0em;
+}
+
+#backgroundColor, #imageColor {
+	width: 50%;
+	margin: 1.0em;
+	display: inline-block;
+}
+
+#previewBackgroundColor, #previewImageColor {
+	width: 30%;
+	border: 1px solid #000;
+	margin-bottom: 8%;
+	display: inline-block;
+}
+
+#divMovimenti, #divSpeed {
+	padding-bottom: 1.0em;
+}
+
+#divMovimenti p, #divColoreImmagine p {
+	margin-bottom: 1.0em;
+}
+
+#divMovimenti label, #divColoreImmagine label {
+	padding: 0.5em;
+}
+
+#divMovimenti input, #divColoreImmagine input {
+	margin-left: 5%;
+	margin-bottom: 3%;
+}
+
+.divContainerSlider {
+	width: 60%;
+	margin: auto;
+	margin-top: 1.0em;
+	margin-bottom: 1.0em;
+}
+
+#labelSpeed {
+	display: inline-block;
+	margin-left: 46%;
+}
+
+#divImage img {
+	width: 40%;
+	display: block;
+	margin: auto;
+	margin-top: 1.0em;
+	padding-bottom: 1.5em;
+}
+
+#divImage select {
+	margin-top: 1.0em;
+}
+
+#idImage {
+	margin: 1.0em;
+	font-size: 0.9em;
+	width: 40%;
+}
+
+div > p {
+	padding: 0.3em;
+}
+
+div > p > span {
+	float:left;
+	margin: 0 0.5em;
+}
+
+#divBadContrast {
+	margin-top: 0em;
+	margin-bottom: 1.0em;
+}
+
+#divBadContrast p {
+	padding: 0.5em;
+}
+
+#divDimensions, #divImage {
+	text-align: center;
+}
+
+#divDimensions p, #divImage p {
+	text-align: left;
+}
+
+#divDimensions {
+	padding-bottom: 1.0em;
+}
+
+#sliderDimensions {
+	width: 70%;
+	margin: auto;
+	margin-top: 1.0em;
+	margin-bottom: 1.5em;
+}
+
+#exampleDimensions {
+	clear: both;
+	margin: auto;
+}
+
+#divManager {
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+
+#divSliderSpeed {
+	float: left;
+	width: 25%;
+}
+
+#sliderSpeed {
+	margin: auto;
+	width: 60%;
+	margin-bottom: 1.0em;
+}
+
+#labelSpeed {
+	display: block;
+	width: 15%;
+	margin: auto;
+	font-size: 1.4em;
+	margin-bottom: 0.6em;
+}
+
+#buttons {
+	width: 95%;
+	margin: auto;
+	margin-top: 1.0em;
+	padding: 1.0em 0em 1.0em 0em;
+}

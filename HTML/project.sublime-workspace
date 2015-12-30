@@ -1,0 +1,688 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"patien",
+				"patientID"
+			],
+			[
+				"Hel",
+				"HelpMeSettingsNamespace"
+			],
+			[
+				"no",
+				"noClientConnected"
+			],
+			[
+				"dialogNoC",
+				"dialogNoChildClientConnected"
+			],
+			[
+				"dialogNo",
+				"dialogNoChildClientConnected"
+			],
+			[
+				"pati",
+				"patientLogged"
+			],
+			[
+				"valueForDe",
+				"valueForDeltaTouch"
+			],
+			[
+				"valueFor",
+				"valueForDeltaEyes"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"paddi",
+				"padding-top"
+			],
+			[
+				"descr",
+				"descrizioneCorretta"
+			],
+			[
+				"pes",
+				"pesoCorretto"
+			],
+			[
+				"colo",
+				"coloreCorretto"
+			],
+			[
+				"nome",
+				"nomeCorretto"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"th",
+				"thead	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "doctor/watchHelpMe.html",
+			"settings":
+			{
+				"buffer_size": 2589,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "doctor/js/watchHelpMe.js",
+			"settings":
+			{
+				"buffer_size": 16475,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "doctor/watchCatchMe.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "doctor/new_visit.html",
+			"settings":
+			{
+				"buffer_size": 4249,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "doctor/js/HelpMeSettings.js",
+			"settings":
+			{
+				"buffer_size": 25378,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "doctor/js/nuovavisita.js",
+			"settings":
+			{
+				"buffer_size": 11151,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/Utilities.js",
+			"settings":
+			{
+				"buffer_size": 6184,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp/htdocs/CVI/HTML/js/index.js",
+		"/C/wamp/htdocs/CVI/HTML/style/base.css",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/38/2015-12-17-15-37-554/Results.txt",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/InputEyeTracking.txt",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/InputImage.txt",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/GameSpecs.ini",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/InputTouch.txt",
+		"/C/wamp/htdocs/CVI/HTML/catchMe/settings/images.xml",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/Utils.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/formFilm.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/film.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/GetAllFilms.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/InsertNewFilm.cgi",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/33/2015-6-22-13-28-546/Results.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/CreatedWekaFiles.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/More_Zero_Answers/SMOTHEoutput_classification.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/More_Zero_Answers/output_classification.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/CreatedWekaFiles copy 2.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/More_Zero_Answers/output_classification copy.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/More_Zero_Answers/output_classification_smothe.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/CreatedWekaFiles copy.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/WekaFileCreated.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/Statistical Significance/statistical_significance.txt",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/More_Zero_Answers/351565052265664/StressClassification351565052265664EASY.arff",
+		"/C/Users/Matteo/AndroidStudioProjects/iWildSenseStress/iWildSenseStress/src/main/java/ch/qol/unige/iwildsensestress/notification_manager/AlarmSurveyManager.java",
+		"/C/Users/Matteo/AndroidStudioProjects/iWildSenseStress/iWildSenseStress/src/main/java/ch/qol/unige/iwildsensestress/notification_manager/AlarmFinalQuestionnaireManager.java",
+		"/C/Users/Matteo/AndroidStudioProjects/iWildSenseStress/iWildSenseStress/src/main/java/ch/qol/unige/iwildsensestress/notification_manager/AllAlarmsManager.java",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/351565052265664/StressClassification351565052265664DIFFICULT.arff",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/output/classification/351565052265664/StressClassification351565052265664EASY.arff",
+		"/C/Users/Matteo/workspace/iWildSenseStress/src/ch/qol/unige/iwildsensestress/notification_manager/AlarmSurveyManager.java",
+		"/C/Users/Matteo/workspace/iWildSenseStress/src/ch/qol/unige/iwildsensestress/notification_manager/AlarmFinalQuestionnaireManager.java",
+		"/C/Users/Matteo/workspace/iWildSenseStress/src/ch/qol/unige/iwildsensestress/notification_manager/AllAlarmsManager.java",
+		"/C/wamp/htdocs/CVI/HTML/server/GetGraphData.php",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/graphsettings.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/gestionepazienti.js",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/12/2015-6-17-9-26-503/DeltaValues.txt",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/13/2015-6-17-10-5-505/GameSpecs.ini",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/35/2015-6-22-14-21-551/GameSpecs.ini",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/12/2015-6-17-9-26-503/GameSpecs.ini",
+		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/15/2015-6-17-11-4-509/Results.txt",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/tecweb1-2015/style.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/tecweb1-2015/trama.html",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/tecweb1-2015/curiosita.html",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/tecweb1-2015/film.html",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/tecweb1-2015/index.html",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/tecweb1-2015/protagonisti.html",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/8mcorona/tecweb/public_html/js/functions.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/8mcorona/tecweb/cgi-bin/articolo.cgi",
+		"/C/Users/Matteo/Dropbox/sac2016/sig-alternate-sample.tex",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/8mcorona/tecweb/public_html/style.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/8mcorona/tecweb/public_html/small.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/editGelati.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/editNews.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/editSemifreddi.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/area_riservata.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/gestisciGelati.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/gestisciNews.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/gestisciSemifreddi.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/script/javascript.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/9accesskey-ddalbian/src/public_html/css/gelati.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/11PizzaMania-spilo/sito/public_html/js/formValidate.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/addComicValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/addChapterValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/addCommentValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/addNewsValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/addPageValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/addProductValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/loginValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/mobileAdapter.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/userFormValidator.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/public_html/js/validationFunctions.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/7CinemaItalia-sboccato/public_html/javascript/commenti.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/7CinemaItalia-sboccato/public_html/javascript/film.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/7CinemaItalia-sboccato/public_html/javascript/news.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/11PizzaMania-spilo/sito/cgi-bin/show.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/11PizzaMania-spilo/sito/cgi-bin/logged.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/11PizzaMania-spilo/sito/cgi-bin/login.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/gestione.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/libreria.pl",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/logout_control.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/postInsert.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/radio_control.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/libreria_funzioni.pl",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/acc_control.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/cgi-bin/reg_control.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/10RoketTeam-lsantaca/public_html/css/default.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/7CinemaItalia-sboccato/public_html/css/mobile.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/7CinemaItalia-sboccato/public_html/css/desktop.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/approveUser.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/comicsManager.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/editProfile.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/functions.pm",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/HTMLGenerator.pm",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/login.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/load.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/marketManager.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/newsManager.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/search.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/register.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/public_html/js/functions.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/5NuovoLavoro-fcarnova/cgi-bin/elimina_annuncio.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/modificheImpasti.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/inserisciPizza.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/impasti.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/modifichePizze.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/pizze.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/registration_control.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/commentsLoad.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/cookie_control.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/pass_control.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/desk.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/js/controlloForm.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/2roger-iparise/public_html/Js/trova.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/2roger-iparise/public_html/Js/abbandono.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/js/functions.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/cgi-bin/gestisciProfilo.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/cgi-bin/cambiaVoceProfilo.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/css/style_v3.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/css/style_v2-1.css",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/cgi-bin/aggiungiFotocamera.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/cgi-bin/paginaUtente.cgi",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/cgi-bin/cancellaUtente.cgi",
+		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/survey_data/351565052265664_survey_events.csv",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/validazioneAnnuncio.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/validazioneRegistrazione.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/Amministrazione.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/checkLogged.js",
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/5BugBusters/public_html/js/script.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"gameID",
+			"gameReady",
+			"patientID",
+			"noClient",
+			"loginIncorrect",
+			"checkLogin",
+			"header",
+			"secondStepPage",
+			"�",
+			"/",
+			"opzioniGrafo",
+			"drawCatchMe",
+			"data",
+			"checkData",
+			"checkArtista",
+			";2)",
+			"6279166837533315",
+			"6331249952316285",
+			"6279166837533315",
+			"logger",
+			"Easy2/all",
+			"Accelerometer_Gravity__1500_15",
+			"Accelerometer_Gravity__1000_15",
+			"NaN",
+			"388730847",
+			"388730604",
+			"12688382",
+			"12687226",
+			"PROTOCOL",
+			"ScrollView",
+			"WRITING",
+			"WRITE",
+			"WRITING",
+			"WRIT",
+			"WRITING",
+			"PROTOCOL",
+			"(261",
+			",,",
+			"[-1,class android.widget.ImageView,2172,2371,180,180,0,null]",
+			"[-1,class android.widget.ImageView,2172,1381,180,180,0,null]",
+			"[-1,class android.widget.ImageView,-851,-796,180,180,0,null]",
+			",0,",
+			"REPETITION",
+			"0.0;",
+			"MYFILE",
+			"1)",
+			"detec",
+			"stage",
+			"description",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"1)",
+			"6.6729751831309E13",
+			"xml",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"STAIR_UPSTAIRS",
+			"STAIR_DOWNSTAIRS",
+			"text-"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\",
+			"WRITE",
+			",comma",
+			"STAIRS"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "doctor/watchHelpMe.html",
+					"settings":
+					{
+						"buffer_size": 2589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1703,
+								1703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "doctor/js/watchHelpMe.js",
+					"settings":
+					{
+						"buffer_size": 16475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								550,
+								550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "doctor/watchCatchMe.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "doctor/new_visit.html",
+					"settings":
+					{
+						"buffer_size": 4249,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2367,
+								2367
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "doctor/js/HelpMeSettings.js",
+					"settings":
+					{
+						"buffer_size": 25378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								80
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "doctor/js/nuovavisita.js",
+					"settings":
+					{
+						"buffer_size": 11151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								296,
+								296
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								80
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/Utilities.js",
+					"settings":
+					{
+						"buffer_size": 6184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								769,
+								784
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 247.0,
+	"status_bar_visible": true
+}

@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	position: static;
+}
+
+html, body {
+	width: 100%;
+	font-size: 1.1em;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+body {
+	background-color: #293E6A;
+}
+
+.alignCenter {
+	text-align: center;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+.alignLeft {
+	text-align: left;
+}
+
+.italic {
+	font-style: italic;
+}
+
+#preloaderWaitingCache {
+	width: 30%;
+	margin: auto;
+	position: absolute;
+	left: 35%;
+	top: 20%;
+	z-index: 10;
+}
+
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+
+#header {
+	padding: 0.8em;
+	background-color: #3B5998;
+	color: #FFF;
+}
+
+#header h1 {
+	margin: 0;
+	font-size: 2.3em;
+}
+
+#header h2 {
+	margin: 0.3em;
+	font-size: 1.5em;
+}
+
+#logoLeft {
+	float: left;
+	width: 15%;
+	margin-left: 1%;
+}
+
+#logoRight {
+	float: right;
+	width: 15%;
+	margin-right: 1%;
+}
+
+#mainContent {
+	margin: auto;
+	max-width: 1024px;
+	background-color: #639BF1;	
+	margin-top: 0em;
+	padding-bottom: 2.0em;
+}
+
+#imgGoBack {
+	cursor: pointer;
+	width: 7em;
+}
+
+footer {
+	max-width: 1024px;
+	margin: auto;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	font-size: 0.8em;
+	text-align: center;
+	background-color: #3B5998;
+	color: #FFF;
+}
+
+footer p {
+	margin: 0.5em;
+}
+
+em {
+	font-style: italic;
+}
+

@@ -1,0 +1,149 @@
+html {
+	overflow-y: scroll;
+}
+
+.longHeight {
+	min-height: 22em;
+}
+
+#nuovaVisita {
+	padding-top: 1.0em;
+	min-height: 2.0em;
+}
+
+#nuovaVisita h2 {
+	font-size: 1.5em;
+	float: left;
+	width: 50%;
+	margin-left: 25%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#imgGoBack {
+	float: right;
+	width:5em;
+	background-color: #FFF;
+	margin-right: 0.5em;
+}
+
+#chooseOldPatient, #newPatient {
+	width: 40%;
+	text-align: left;
+	margin: 1.0em;
+	padding: 0em;
+	border: 1px solid #9B001F;
+	text-align: center;
+}
+
+#chooseOldPatient h3, #newPatient h3 {
+	margin: 0em auto;
+	margin-bottom: 1.0em;
+	padding: 0.3em 0em 0.5em 0em;
+	border: none;
+}
+
+#chooseOldPatient {
+	float: left;
+	margin-left: 5%;
+}
+
+#selectPatient {
+	min-width: 50%;
+	margin-bottom: 2.0em;
+	font-size: 0.9em;
+}
+
+#newPatient {
+	float: right;
+	margin-right: 5%;
+}
+
+#newPatient button {
+	margin: 0.8em 1% 0.7em 1%;
+}
+
+label, input, select {
+	display: inline-block;
+}
+
+label {
+	width: 30%;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.0em;
+}
+
+label + input, label + select {
+	width: 40%;
+	margin: 0 10% 0 4%;
+}
+
+input + input, input + select {
+	float: right;
+}
+
+#disabilita {
+	width: 50%;
+	margin-left: 0.7em;
+	font-size: 0.9em;
+}
+
+#games {
+	clear: both;
+	margin-bottom: 1.0em;
+	padding: 1.0em;
+	text-align: left;
+	margin-left: 5%;
+	width: 50%;
+	border: 1px solid #9B001F;
+}
+
+#games select {
+	margin-left: 1.0em;
+	min-width: 40%;
+}
+
+#games p {
+	font-size: 0.9em;
+	margin: 0.7em 0em 0.7em 0.5em;
+	font-style: italic;
+}
+
+#divChooseTypeOfGame {
+	margin-top: 1.0em;
+}
+
+#divChooseTypeOfGame label {
+	margin: 1.0em;
+	margin-left: 0.5em;
+}
+
+.leftSide {
+	clear: left;
+	float: left;
+	width: 50%;
+	margin: 1.0em;
+}
+
+.rightSide {
+	float: right;
+	width: 40%;
+	margin: 1.0em;
+}
+
+#buttons {
+	text-align: center;
+	border: none;
+	clear: both;
+	width: 80%;
+	margin: auto;
+	padding-bottom: 0.5em; 
+}
+
+#buttons button {
+	margin: 5%;
+	font-size: 1.5em;
+}
+
+

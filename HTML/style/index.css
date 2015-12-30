@@ -1,0 +1,45 @@
+#login {
+	width: 70%;
+	margin: auto;
+	padding-top: 1.5em;
+	padding-bottom: 0.5em;
+}
+
+label, input {
+	display: inline-block;
+}
+
+label {
+	width: 30%;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+label + input {
+	width: 30%;
+	margin: 0 10% 0 4%;
+}
+
+input + input {
+	float: right;
+}
+
+.inputText {
+	font-size: 0.8em;
+	padding: 0.3em;
+}
+
+#buttonLogin {
+	margin: 1.0em;
+}
+
+.buttonBig {
+	padding: 5%;
+}
+
+#imgPreloaderSendigOfflineVisits {
+	margin: auto;
+	margin-top: 0.5em;
+	width: 10%;
+}

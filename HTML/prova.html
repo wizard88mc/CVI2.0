@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+Remove this if you use the .htaccess -->
+
+<title>prova</title>
+<meta name="description" content="" />
+<meta name="author" content="Matteo" />
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-ui-1.8.20.custom.min.js"></script>
+<link href="style/animate-custom.css" rel="stylesheet" />
+<script src="js/Utilities.js"></script>
+
+
+<script>
+
+function addSoundSource(element, sourceFileName) {
+	
+	$('<source>').attr('src', 'helpMe/sounds/' + sourceFileName + '.ogg')
+		.attr('type', 'audio/ogg').attr('preload', 'auto').appendTo(element);
+	$('<source>').attr('src', 'helpMe/sounds/' + sourceFileName + '.mp3')
+		.attr('type', 'audio/mpeg').attr('preload', 'auto').appendTo(element);
+}
+
+$('document').ready(function() {
+	$('<div>').attr('id', 'finalFeedback').appendTo('#divSounds');
+
+	addSoundSource($('<audio>').attr('id', 'messoInsieme').appendTo('#divSounds #finalFeedback'), 'messo_insieme');
+	addSoundSource($('<audio>').attr('id', 'oggettiAssomigliano').appendTo('#divSounds #finalFeedback'), 'oggetti_assomigliano');
+
+	var divObjects = $('<div>').attr('id', 'numberOfObjects').appendTo('#divSounds div#finalFeedback');
+
+	var numbers = new Array('uno', 'due', 'tre', 'quattro', 'cinque', 'sei', 'sette', 'otto', 'nove');
+
+	for (x in numbers) {
+		addSoundSource($('<audio>').attr('id', 'correct' + (Number(x)+1)).appendTo(divObjects), numbers[x]);
+	}
+
+	$('#divSounds #finalFeedback #messoInsieme').on('ended', function() {
+		
+		$('#divSounds #finalFeedback #numberOfObjects #correct' + 9).on('ended', function() {
+			
+			$('#divSounds #finalFeedback #oggettiAssomigliano').on('ended', function() {
+				
+				console.log("At the end");
+				
+			}).get(0).play();
+		}).get(0).play();
+		
+	}).get(0).play();
+	
+	setTimeout(function() {
+		
+		$('#messoInsieme').get(0).play();
+		
+	}, 1000);
+});
+
+</script>
+
+</head>
+
+<body>
+	
+<div id="divSounds"></div>
+
+</body>
+</html>
