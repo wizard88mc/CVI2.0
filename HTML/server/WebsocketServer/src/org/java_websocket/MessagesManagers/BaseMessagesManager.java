@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import org.java_websocket.BaseManager;
 import org.json.simple.JSONObject;
 
 import org.java_websocket.DoctorClientManager;
@@ -30,7 +31,6 @@ public abstract class BaseMessagesManager extends Thread {
     protected String fileEyeTracking = null;
     protected String fileSpecs = null;
     protected int visitID = 0;
-    protected boolean withEyeTracker = false;
     protected boolean clearEyeTrackerData = false;
 
     public ArrayList<JSONObject> messagesGameBuffer = new ArrayList<JSONObject>();
@@ -45,12 +45,11 @@ public abstract class BaseMessagesManager extends Thread {
 
     protected static DoctorClientManager doctorManager = null;
 
-    public BaseMessagesManager(String patientID, int visitID, 
-            boolean withEyeTracker) {
+    public BaseMessagesManager(String patientID, int visitID) {
 
-        this.visitID = visitID; this.withEyeTracker = withEyeTracker;
+        this.visitID = visitID; 
         
-        if (!this.withEyeTracker) {
+        if (!BaseManager.useEyeTracker) {
             messagesEyeTrackerBuffer = null;
         }
         // devo creare cartella dove salverò i file
@@ -169,9 +168,4 @@ public abstract class BaseMessagesManager extends Thread {
     public void manageDifferentGameData(JSONObject packet) {}
     
     public void gameIsEnded() {}
-    
-    public void withoutTracker() {
-        this.withEyeTracker = false;
-        messagesEyeTrackerBuffer = null;
-    }
 }

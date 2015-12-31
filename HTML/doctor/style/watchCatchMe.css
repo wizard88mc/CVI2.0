@@ -17,13 +17,6 @@ html {
 	font-weight: bold;
 }
 
-#imgGoBack {
-	float: right;
-	width:5em;
-	background-color: #FFF;
-	margin-right: 0.5em;
-}
-
 #divGrafo {
 	width: 90%;
 	margin: auto;

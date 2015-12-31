@@ -300,6 +300,8 @@ waitingToStart: function(message) {
 	
 	var packet = JSON.parse(message.data || message);
 
+	console.log(packet);
+
 	if (packet.TYPE == "START_WORKING") {
 		
 		gameManager.timeToStart = packet.START_TIME;
@@ -427,7 +429,10 @@ buildAnimations: function() {
 		rightMiddleScreen.left = getScreenWidth() - levelsToPerform[i].effectiveImageWidth;
 		rightMiddleScreen.top = centerImage.top; 
 		
-		levelsToPerform[i].animations = CatchMeNamespace.defineSingleAnimation(levelsToPerform[i]);
+		for (var repet = 0; repet < levelsToPerform[i].repetitionsOfMovements; repet++) {
+			levelsToPerform[i].animations = levelsToPerform[i].animations.concat( 
+				CatchMeNamespace.defineSingleAnimation(levelsToPerform[i]));
+		}
 	}
 	/**
 	 * All animations defined, the game is ready to start
@@ -594,130 +599,310 @@ defineSingleAnimation: function(levelSettings) {
 	
 	if (levelSettings.rightMovement) {
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);	
-			}
-	
-			endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-			animations.push(new Animation(startPoint, endPoint, true, 'R'));
-			/**
-			 * Adding two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, 'R'));
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);	
 		}
+	
+		endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
+		animations.push(new Animation(startPoint, endPoint, true, 'R'));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'R'));
 	}
 	
 	if (levelSettings.leftMovement) {
-			
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-			}
-			
-			endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-			animations.push(new Animation(startPoint, endPoint, true, 'L'));
-			/**
-			 * Pushing two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, 'L'));
+		
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
 		}
+		
+		endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
+		animations.push(new Animation(startPoint, endPoint, true, 'L'));
+		/**
+		 * Pushing two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'L'));
+		
 	}
 	
 	if (levelSettings.upMovement) {
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-			}
-			
-			endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-			animations.push(new Animation(startPoint, endPoint, true, 'T'));
-			/**
-			 * As requested, pushing two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, 'T'));
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
 		}
+		
+		endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
+		animations.push(new Animation(startPoint, endPoint, true, 'T'));
+		/**
+		 * As requested, pushing two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'T'));
 	}
 	
 	if (levelSettings.downMovement) {
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-			}
-			
-			endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-			animations.push(new Animation(startPoint, endPoint, true, 'B'));
-			/**
-			 * As requested, pushing two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, 'B'));
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(topCenterScreen.top, topCenterScreen.left);
 		}
+		
+		endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
+		animations.push(new Animation(startPoint, endPoint, true, 'B'));
+		/**
+		 * As requested, pushing two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'B'));
 	}
 	
 	if (levelSettings.upMovement && levelSettings.downMovement && 
 			levelSettings.mixMovements) {
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			var movement = '';
-			if (Math.random() > 0.5) {
-				/**
-				 * Movement from top to bottom
-				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-				}
-				endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-				movement = 'B';
-			}
-			else {
-				/**
-				 * Movement from bottom to top
-				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-				}
-				endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-				movement = 'T';
-			}
-			animations.push(new Animation(startPoint, endPoint, true, movement));
+		var movement = '';
+		if (Math.random() > 0.5) {
 			/**
-			 * Adding two times the same animation
+			 * Movement from top to bottom
 			 */
-			animations.push(new Animation(startPoint, endPoint, true, movement));
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(topCenterScreen.top, topCenterScreen.left);
+			}
+			endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
+			movement = 'B';
 		}
+		else {
+			/**
+			 * Movement from bottom to top
+			 */
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
+			}
+			endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
+			movement = 'T';
+		}
+		animations.push(new Animation(startPoint, endPoint, true, movement));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, movement));
 	}
 	
 	if (levelSettings.upMovement && levelSettings.leftMovement && 
 			levelSettings.mixMovements) {
 	
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) { 
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-			}
-			endPoint = new Point(topCenterScreen.top, 
-						topCenterScreen.left - Math.floor(Math.random() * topCenterScreen.left));
-	
-			
-			animations.push(new Animation(startPoint, endPoint, true, 'TL'));
-			/**
-			 * Adding two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, 'TL'));
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
 		}
+		endPoint = new Point(topCenterScreen.top, 
+					topCenterScreen.left - Math.floor(Math.random() * topCenterScreen.left));
+
+		
+		animations.push(new Animation(startPoint, endPoint, true, 'TL'));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'TL'));
 	}
 	if (levelSettings.upMovement && levelSettings.rightMovement && 
 			levelSettings.mixMovements) {
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(bottomCenterScreen.top,
-							bottomCenterScreen.left - Math.floor(Math.random() * bottomCenterScreen.left));
-			}
-			endPoint = new Point(topCenterScreen.top,
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(bottomCenterScreen.top,
+						bottomCenterScreen.left - Math.floor(Math.random() * bottomCenterScreen.left));
+		}
+		endPoint = new Point(topCenterScreen.top,
+					topCenterScreen.left + Math.floor(Math.random() * topCenterScreen.left));
+		
+		animations.push(new Animation(startPoint, endPoint, true, 'TR'));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'TR'));
+	}
+	if (levelSettings.downMovement && levelSettings.leftMovement 
+		&& levelSettings.mixMovements) {
+	
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(topCenterScreen.top,
 						topCenterScreen.left + Math.floor(Math.random() * topCenterScreen.left));
+		}
+		endPoint = new Point(bottomCenterScreen.top,
+					bottomCenterScreen.left - Math.floor(Math.random() * bottomCenterScreen.left));
+		
+		animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+	}
+	if (levelSettings.downMovement && levelSettings.rightMovement 
+		&& levelSettings.mixMovements) {
+			
+		if (!levelSettings.startFromCenter) {
+			startPoint = new Point(topCenterScreen.top,
+				topCenterScreen.left - Math.floor(Math.random() * topCenterScreen.left));
+		}
+		endPoint = new Point(bottomCenterScreen.top,
+			bottomCenterScreen.left + Math.floor(Math.random() * bottomCenterScreen.left));
+		
+		animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+	}
+	if (levelSettings.leftMovement && levelSettings.rightMovement 
+		&& levelSettings.mixMovements ) {
+		
+		var randomValue = Math.random();
+		if (!levelSettings.startFromCenter) {
+			if (randomValue > 0.5) {
+				//da destra verso sinistra
+				startPoint = new Point(rightMiddleScreen.top, 
+					rightMiddleScreen.left);
+			}
+			else {
+				startPoint = new Point(leftMiddleScreen.top, 
+					leftMiddleScreen.left);
+			}
+		}
+		var movement = '';
+		if (randomValue > 0.5) {
+			endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
+			movement = 'L';
+		}
+		else {
+			endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
+			movement = 'R';
+		}
+		animations.push(new Animation(startPoint, endPoint, true, movement));
+		/**
+		 * Adding two times the same animation
+		 */
+		animations.push(new Animation(startPoint, endPoint, true, movement));
+		
+	}
+	if (levelSettings.upMovement && levelSettings.downMovement && 
+			levelSettings.leftMovement && levelSettings.mixMovements) {
+		
+		if (Math.random() > 0.5) {
+			// primo movimento verso l'alto
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(rightMiddleScreen.left,
+							rightMiddleScreen.top + Math.floor(Math.random() * rightMiddleScreen.top));
+				
+				endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
+				
+			}
+			else {
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+			}
+			animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+			
+			startPoint = new Point(endPoint.top, endPoint.left);
+			endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * leftMiddleScreen.top),
+							leftMiddleScreen.left);
+			
+			animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+		}
+		else {
+			// primo movimento verso il basso 
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(rightMiddleScreen.left,
+					rightMiddleScreen.top - Math.floor(Math.random() * 
+					rightMiddleScreen.top));
+				
+				endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
+			}
+			else {
+				endPoint = new Point(bottomCenterScreen.top, 
+					bottomCenterScreen.left - Math.floor(Math.random() * 
+						(bottomCenterScreen.left / 2)));
+			}
+
+			animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+			
+			startPoint = new Point(endPoint.top, endPoint.left);
+			endPoint = new Point(leftMiddleScreen.top - 
+				Math.floor(Math.random() * leftMiddleScreen.top), 
+				leftMiddleScreen.left);
+			
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+		}
+	}
+	
+	if (levelSettings.upMovement && levelSettings.downMovement && 
+			levelSettings.rightMovement && levelSettings.mixMovements) {
+			
+		if (Math.random() > 0.5) {
+			// primo movimento verso l'alto
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(leftMiddleScreen.left,
+							leftMiddleScreen.top + Math.floor(Math.random() * leftMiddleScreen.top));
+				
+				endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
+				
+			}
+			else {
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+			}
+			animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+			
+			startPoint = new Point(endPoint.top, endPoint.left);
+			endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * rightMiddleScreen.top),
+						rightMiddleScreen.left);
+			
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+		}
+		else {
+			// primo movimento verso il basso 
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(leftMiddleScreen.left,
+							leftMiddleScreen.top - Math.floor(Math.random() * leftMiddleScreen.top));
+				
+				endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
+			}
+			else {
+				endPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+			}
+			animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+			
+			startPoint = new Point(endPoint.top, endPoint.left);
+			endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * rightMiddleScreen.top),
+						rightMiddleScreen.left);
 			
 			animations.push(new Animation(startPoint, endPoint, true, 'TR'));
 			/**
@@ -726,14 +911,60 @@ defineSingleAnimation: function(levelSettings) {
 			animations.push(new Animation(startPoint, endPoint, true, 'TR'));
 		}
 	}
-	if (levelSettings.downMovement && levelSettings.leftMovement && levelSettings.mixMovements
-		/*&& !gameSettings.upMovement && !gameSettings.rightMovement*/) {
-	
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
+
+	if (levelSettings.downMovement && levelSettings.leftMovement && 
+			levelSettings.rightMovement && levelSettings.mixMovements) {
+			
+		if (Math.random() > 0.5) {
+			/**
+			 * First movement to left
+			 */
 			if (!levelSettings.startFromCenter) {
 				startPoint = new Point(topCenterScreen.top,
 							topCenterScreen.left + Math.floor(Math.random() * topCenterScreen.left));
+				endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
 			}
+			else {
+				endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * (leftMiddleScreen.top / 2)));
+			}
+			
+			animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+			
+			startPoint = new Point(endPoint.top, endPoint.left);
+			endPoint = new Point(bottomCenterScreen.top,
+						bottomCenterScreen.left + Math.floor(Math.random() * bottomCenterScreen.left));
+			
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+			
+		}
+		else {
+			/**
+			 * First movement to right
+			 */
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left - Math.floor(Math.random() * topCenterScreen.left));
+				endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
+			}
+			else {
+				endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)));	
+			}
+			
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+			/**
+			 * Adding two times the same animation
+			 */
+			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+			
+			startPoint = new Point(endPoint.top, endPoint.left);
 			endPoint = new Point(bottomCenterScreen.top,
 						bottomCenterScreen.left - Math.floor(Math.random() * bottomCenterScreen.left));
 			
@@ -744,632 +975,385 @@ defineSingleAnimation: function(levelSettings) {
 			animations.push(new Animation(startPoint, endPoint, true, 'BL'));
 		}
 	}
-	if (levelSettings.downMovement && levelSettings.rightMovement && levelSettings.mixMovements
-		/*&& !gameSettings.upMovement && !gameSettings.leftMovement*/) {
-			
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (!levelSettings.startFromCenter) {
-				startPoint = new Point(topCenterScreen.top,
-							topCenterScreen.left - Math.floor(Math.random() * topCenterScreen.left));
-			}
-			endPoint = new Point(bottomCenterScreen.top,
-						bottomCenterScreen.left + Math.floor(Math.random() * bottomCenterScreen.left));
-			
-			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-			/**
-			 * Adding two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-		}
-	}
-	if (levelSettings.leftMovement && levelSettings.rightMovement && levelSettings.mixMovements 
-		/*&& !gameSettings.upMovement && !gameSettings.downMovement*/) {
+	if (levelSettings.upMovement && levelSettings.downMovement &&
+			levelSettings.leftMovement && levelSettings.rightMovement 
+			&& levelSettings.mixMovements) {
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			var randomValue = Math.random();
-			if (!levelSettings.startFromCenter) {
-				if (randomValue > 0.5) {
-					//da destra verso sinistra
-					startPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-				}
-				else {
-					startPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-				}
-			}
-			var movement = '';
-			if (randomValue > 0.5) {
-				endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-				movement = 'L';
-			}
-			else {
-				endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-				movement = 'R';
-			}
-			animations.push(new Animation(startPoint, endPoint, true, movement));
-			/**
-			 * Adding two times the same animation
-			 */
-			animations.push(new Animation(startPoint, endPoint, true, movement));
-		}
-	}
-	if (levelSettings.upMovement && levelSettings.downMovement && 
-			levelSettings.leftMovement && levelSettings.mixMovements /*&& !gameSettings.rightMovement*/) {
+		var firstPoint = Math.random();
+		var direction = Math.random();
 		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (Math.random() > 0.5) {
-				// primo movimento verso l'alto
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(rightMiddleScreen.left,
-								rightMiddleScreen.top + Math.floor(Math.random() * rightMiddleScreen.top));
-					
-					endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-					
-				}
-				else {
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-				}
-				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-				
-				startPoint = new Point(endPoint.top, endPoint.left);
-				endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * leftMiddleScreen.top),
-								leftMiddleScreen.left);
-				
-				animations.push(new Animation(startPoint, endPoint, true, 'BL'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+		if (firsPoint < 0.25) {
+			/**
+			 * Starting point at the top of the screen
+			 */
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(topCenterScreen.top, topCenterScreen.left);	
 			}
-			else {
-				// primo movimento verso il basso 
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(rightMiddleScreen.left,
-								rightMiddleScreen.top - Math.floor(Math.random() * rightMiddleScreen.top));
-					
-					endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-				}
-				else {
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-				}
-				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-				
-				startPoint = new Point(endPoint.top, endPoint.left);
-				endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * leftMiddleScreen.top),
-								leftMiddleScreen.left);
-				
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-			}
-		}
-	}
-	
-	if (levelSettings.upMovement && levelSettings.downMovement && 
-			levelSettings.rightMovement && levelSettings.mixMovements /**&& !gameSettings.leftMovement*/) {
-			
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (Math.random() > 0.5) {
-				// primo movimento verso l'alto
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(leftMiddleScreen.left,
-								leftMiddleScreen.top + Math.floor(Math.random() * leftMiddleScreen.top));
-					
-					endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-					
-				}
-				else {
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-				}
-				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-				
-				startPoint = new Point(endPoint.top, endPoint.left);
-				endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * rightMiddleScreen.top),
-							rightMiddleScreen.left);
-				
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-			}
-			else {
-				// primo movimento verso il basso 
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(leftMiddleScreen.left,
-								leftMiddleScreen.top - Math.floor(Math.random() * leftMiddleScreen.top));
-					
-					endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-				}
-				else {
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-				}
-				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-				
-				startPoint = new Point(endPoint.top, endPoint.left);
-				endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * rightMiddleScreen.top),
-							rightMiddleScreen.left);
-				
-				animations.push(new Animation(startPoint, endPoint, true, 'TR'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, true, 'TR'));
-			}
-		}
-	}
-
-	if (levelSettings.downMovement && levelSettings.leftMovement && 
-			levelSettings.rightMovement && levelSettings.mixMovements /*&& !gameSettings.upMovement*/) {
-			
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			if (Math.random() > 0.5) {
-				/**
-				 * First movement to left
-				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left + Math.floor(Math.random() * topCenterScreen.left));
-					endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-				}
-				else {
-					endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * (leftMiddleScreen.top / 2)));
-				}
-				
-				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-				
-				startPoint = new Point(endPoint.top, endPoint.left);
-				endPoint = new Point(bottomCenterScreen.top,
-							bottomCenterScreen.left + Math.floor(Math.random() * bottomCenterScreen.left));
-				
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-				/**
-				 * Adding two times the same animation
-				 */
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-				
-			}
-			else {
+			if (direction < 0.5) {
 				/**
 				 * First movement to right
 				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left - Math.floor(Math.random() * topCenterScreen.left));
-					endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-				}
-				else {
-					endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)));	
-				}
+				endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
+							rightMiddleScreen.left);
 				
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
 				/**
 				 * Adding two times the same animation
 				 */
-				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
 				
 				startPoint = new Point(endPoint.top, endPoint.left);
 				endPoint = new Point(bottomCenterScreen.top,
-							bottomCenterScreen.left - Math.floor(Math.random() * bottomCenterScreen.left));
+							bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
+							leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'TR'));
+				
+			}
+			else {
+				/**
+				 * First movement to the left
+				 */
+				endPoint = new Point(leftMiddleScreen.top,
+							leftMiddleScreen.left + Math.floor(Math.random() * (leftMiddleScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
+							rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(topCenterScreen.top, endPoint.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'TL'));
+			}
+		}
+		else if (firstPoint >= 0.25 && firsPoint < 0.5) {
+			
+			/**
+			 * Starting point on the right of the screen
+			 */
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
+			}
+			if (direction < 0.5) {
+				/*
+				 * To the bottom of the screen
+				 */
+				endPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
+							leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(topCenterScreen.top, 
+							topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+				
+			}
+			else {
+				/**
+				 * First movement to the top of the screen
+				 */
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
+							leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'TR'));
+			}
+		}
+		else if (firstPoint >= 0.5 && firstPoint < 0.75) {
+			// punto di partenza in basso
+			
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);	
+			}
+			if (direction < 0.5) {
+				// primo spostamento verso destra
+				
+				endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
+							rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
+							leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'BR'));
+				
+			}
+			else {
+				/**
+				 * First movement to the left
+				 */
+				endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
+							leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
+							rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
 				
 				animations.push(new Animation(startPoint, endPoint, true, 'BL'));
 				/**
 				 * Adding two times the same animation
 				 */
 				animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+			}	
+		}
+		else if (firstPoint >= 0.75) {
+			/**
+			 * Starting point on the left of the screen
+			 */
+			if (!levelSettings.startFromCenter) {
+				startPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
+			}
+			if (direction < 0.5) {
+				/**
+				 * First movement to the bottom of the screen
+				 */
+				endPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
+							rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'BL'));
+				
+			}
+			else {
+				/**
+				 * First movement to the top
+				 */
+				endPoint = new Point(topCenterScreen.top,
+							topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'TR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
+							rightMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BR'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(bottomCenterScreen.top,
+							bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
+				
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, false, 'BL'));
+				
+				startPoint = new Point(endPoint.top, endPoint.left);
+				endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
+				
+				animations.push(new Animation(startPoint, endPoint, true, 'TL'));
+				/**
+				 * Adding two times the same animation
+				 */
+				animations.push(new Animation(startPoint, endPoint, true, 'TL'));
 			}
 		}
 	}
-	if (levelSettings.upMovement && levelSettings.downMovement &&
-			levelSettings.leftMovement && levelSettings.rightMovement && levelSettings.mixMovements) {
-		
-		for (var i = 0; i < levelSettings.repetitionsOfMovements; i++) {
-			var firstPoint = Math.random();
-			var direction = Math.random();
-			
-			if (firsPoint < 0.25) {
-				/**
-				 * Starting point at the top of the screen
-				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(topCenterScreen.top, topCenterScreen.left);	
-				}
-				if (direction < 0.5) {
-					/**
-					 * First movement to right
-					 */
-					endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
-								rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
-								leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(topCenterScreen.top, topCenterScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'TR'));
-					
-				}
-				else {
-					/**
-					 * First movement to the left
-					 */
-					endPoint = new Point(leftMiddleScreen.top,
-								leftMiddleScreen.left + Math.floor(Math.random() * (leftMiddleScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
-								rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(topCenterScreen.top, endPoint.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'TL'));
-				}
-			}
-			else if (firstPoint >= 0.25 && firsPoint < 0.5) {
-				
-				/**
-				 * Starting point on the right of the screen
-				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-				}
-				if (direction < 0.5) {
-					/*
-					 * To the bottom of the screen
-					 */
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
-								leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(topCenterScreen.top, 
-								topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-					
-				}
-				else {
-					/**
-					 * First movement to the top of the screen
-					 */
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
-								leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(rightMiddleScreen.top, rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'TR'));
-				}
-			}
-			else if (firstPoint >= 0.5 && firstPoint < 0.75) {
-				// punto di partenza in basso
-				
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);	
-				}
-				if (direction < 0.5) {
-					// primo spostamento verso destra
-					
-					endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
-								rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(leftMiddleScreen.top + Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
-								leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'BR'));
-					
-				}
-				else {
-					/**
-					 * First movement to the left
-					 */
-					endPoint = new Point(leftMiddleScreen.top - Math.floor(Math.random() * (leftMiddleScreen.top / 2)),
-								leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
-								rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(bottomCenterScreen.top, bottomCenterScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'BL'));
-				}	
-			}
-			else if (firstPoint >= 0.75) {
-				/**
-				 * Starting point on the left of the screen
-				 */
-				if (!levelSettings.startFromCenter) {
-					startPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-				}
-				if (direction < 0.5) {
-					/**
-					 * First movement to the bottom of the screen
-					 */
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left + Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(rightMiddleScreen.top - Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
-								rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left - Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'BL'));
-					
-				}
-				else {
-					/**
-					 * First movement to the top
-					 */
-					endPoint = new Point(topCenterScreen.top,
-								topCenterScreen.left + Math.floor(Math.random() * (topCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'TR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(rightMiddleScreen.top + Math.floor(Math.random() * (rightMiddleScreen.top / 2)),
-								rightMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BR'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(bottomCenterScreen.top,
-								bottomCenterScreen.left - Math.floor(Math.random() * (bottomCenterScreen.left / 2)));
-					
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, false, 'BL'));
-					
-					startPoint = new Point(endPoint.top, endPoint.left);
-					endPoint = new Point(leftMiddleScreen.top, leftMiddleScreen.left);
-					
-					animations.push(new Animation(startPoint, endPoint, true, 'TL'));
-					/**
-					 * Adding two times the same animation
-					 */
-					animations.push(new Animation(startPoint, endPoint, true, 'TL'));
-				}
-			}
-		}
-	}
-	
 	return animations;
 },
 
@@ -1390,8 +1374,7 @@ allExercisesCompleted: function() {
 	var packetToSend = { TYPE: 'STOP_GAME'};
 			
 	websocket.send(JSON.stringify(packetToSend));
-		
-	//CatchMeNamespace.createTransitionCSS(0, listCanvasSettings[gameManager.levelIterator].actual);
+	
 	clearInterval(gameManager.timing);
 	CatchMeNamespace.animationEndGame(); 
 },
@@ -1401,7 +1384,6 @@ allExercisesCompleted: function() {
  */
 animationEndGame: function() {
 	
-	console.log("Animazione fine gioco + ritorno stato iniziale");
 	websocket.close();
 	websocket = null;
 	setTimeout(location.replace('../patient/index.html'), 2000);
@@ -1563,13 +1545,13 @@ function localFileSystemInitializationComplete() {
 function sendPacketsGameDefinitionOffline() {
 	
 	var firstPacket = {
-        	"GAME": gameIdentification,
-        	"PATIENT_ID": patientID
-        };
+    	"GAME": gameIdentification,
+    	"PATIENT_ID": patientID
+    };
         
-        websocket.send(JSON.stringify(firstPacket));
+    websocket.send(JSON.stringify(firstPacket));
         
-        CatchMeNamespace.sendPacketImageScreenInfo();
+    CatchMeNamespace.sendPacketImageScreenInfo();
 }
 
 function folderForOfflineSavingCreated() {

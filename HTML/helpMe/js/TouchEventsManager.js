@@ -68,12 +68,20 @@ var touchManagerNamespace = {
             imageObjectOnScreen.moveInsideSacco = true;
             gameManager.packetWithResults.COMPLETION_TIME = new Date().getTime() - gameManager.startTimeObjectOnScreen;
         }
+        else {
+            imageObjectOnScreen.moveInsideSacco = false;
+            gamemanager.packetWithResults.COMPLETION_TIME = 0;
+        }
         
         if (imageObjectOnScreen.element.position().left + Math.round(imageObjectOnScreen.width / 4) <= 
         	cestino.width ) {
         	
         	imageObjectOnScreen.moveInsideCestino = true;
         	gameManager.packetWithResults.COMPLETION_TIME = new Date().getTime() - gameManager.startTimeObjectOnScreen;
+        }
+        else {
+            imageObjectOnScreen.moveInsideCestino = false;
+            gameManager.packetWithResults.COMPLETION_TIME = 0;
         }
     },
 

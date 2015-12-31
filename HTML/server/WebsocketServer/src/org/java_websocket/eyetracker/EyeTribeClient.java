@@ -96,8 +96,8 @@ public class EyeTribeClient {
                 transitionDuration, pointDiameter);
     }
     
-    public void setScreenHeightAndWidth(int screenWidth, int screenHeight)
-    {
+    public void setScreenHeightAndWidth(int screenWidth, int screenHeight) {
+        
         //gazeManagerSingleton.switchScreen(0, screenWidth, screenHeight, 
                 //screenWidth, screenHeight);
     }
@@ -106,8 +106,7 @@ public class EyeTribeClient {
      * Allows the eye tracker to send data to the server
      * @param startTime: the starting time, used to calculate offset of packets
      */
-    public void startSendDataToServer(long startTime)
-    {
+    public void startSendDataToServer(long startTime) {
         sendData = true;
         this.startTime = startTime;
     }
@@ -115,8 +114,8 @@ public class EyeTribeClient {
     /**
      * Stop send data to the server
      */
-    public void stopSendDataToServer()
-    {
+    public void stopSendDataToServer() {
+        
         sendData = false;
     }
     

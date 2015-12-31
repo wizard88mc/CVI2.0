@@ -110,7 +110,7 @@ startNewGame: function() {
 		}
 		
 		$('<div>').attr('id', 'errorStartGame').attr('title', 'Mancano informazioni')
-			.css('padding', '0.3em').appendTo('#mainContent');
+			.appendTo('#mainContent');
 		
 		$('<p>').text('Non sono state fornite tutte le informazioni necessarie:')
 			.appendTo('#errorStartGame');

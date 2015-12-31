@@ -60,7 +60,7 @@ public class IPADClientManager extends WebSocketWithOffsetCalc {
                 }
             }
             else if (packetType.equals("SPEED_VALUE") || 
-                    packetType.equals("PRESENTATION_COMPLETE") ||
+                    packetType.equals(BaseManager.PRESENTATION_COMPLETE) ||
                     packetType.equals(BaseManager.SCREEN_MEASURES) ||
                     packetType.equals("LEVEL_ENDED"))  {
                 
@@ -78,7 +78,7 @@ public class IPADClientManager extends WebSocketWithOffsetCalc {
                     
                 }
             }
-            else if (packetType.equals("READY_TO_PLAY")) {
+            else if (packetType.equals(BaseManager.READY_TO_PLAY)) {
                 
                 if (packet.containsKey(BaseManager.IMAGE_WIDTH)) {
                     
@@ -95,7 +95,7 @@ public class IPADClientManager extends WebSocketWithOffsetCalc {
                                 screenWidth, screenHeight);
                     }
                     packet.remove(BaseManager.MESSAGE_TYPE);
-                    packet.put(BaseManager.MESSAGE_TYPE, "IMAGE_SPECIFICATION");
+                    packet.put(BaseManager.MESSAGE_TYPE, BaseManager.IMAGE_SPECIFICATION);
 
                     doctorManager.sendPacket(packet);
                 }

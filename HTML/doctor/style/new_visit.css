@@ -12,19 +12,13 @@ html {
 }
 
 #nuovaVisita h2 {
-	font-size: 1.5em;
+	font-size: 2.0em;
 	float: left;
 	width: 50%;
 	margin-left: 25%;
 	text-align: center;
 	font-weight: bold;
-}
-
-#imgGoBack {
-	float: right;
-	width:5em;
-	background-color: #FFF;
-	margin-right: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 #chooseOldPatient, #newPatient {
@@ -102,6 +96,7 @@ input + input, input + select {
 #games select {
 	margin-left: 1.0em;
 	min-width: 40%;
+	font-size: 0.9em;
 }
 
 #games p {
@@ -146,4 +141,6 @@ input + input, input + select {
 	font-size: 1.5em;
 }
 
-
+#errorStartGame {
+	padding: 0.5em 1.0em 0.5em 1.0em;
+}

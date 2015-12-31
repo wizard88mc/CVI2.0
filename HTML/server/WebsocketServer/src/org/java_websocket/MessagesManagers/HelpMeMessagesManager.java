@@ -8,7 +8,6 @@ import org.java_websocket.BaseManager;
 import org.java_websocket.Messages.EyeTrackerDataPacket;
 import org.java_websocket.Messages.HelpMeDataPacket;
 import org.java_websocket.Messages.HelpMeDoctorMessage;
-import org.java_websocket.WebSocketWithOffsetCalc;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -24,10 +23,8 @@ public class HelpMeMessagesManager extends BaseMessagesManager {
     protected int totalRightAnswers = 0;
     protected int totalBadAnswers = 0;
     
-    //protected long lastTimeValidPacket = 0L;
-    
-    public HelpMeMessagesManager(String patientID, int visitID, boolean withTracker) {
-        super(patientID, visitID, withTracker);
+    public HelpMeMessagesManager(String patientID, int visitID) {
+        super(patientID, visitID);
         
         String fileResults = folderWhereArchive.concat("Results.txt");
         try {
@@ -47,7 +44,7 @@ public class HelpMeMessagesManager extends BaseMessagesManager {
         
         while (!endGame) {
             
-            if (this.withEyeTracker) {
+            if (BaseManager.useEyeTracker) {
                 synchronized(bufferSynchronizer) {
                     while (messagesGameBuffer.isEmpty() && messagesEyeTrackerBuffer.isEmpty()) {
                         try {
@@ -142,7 +139,9 @@ public class HelpMeMessagesManager extends BaseMessagesManager {
                 else if (messagesEyeTrackerBuffer.isEmpty()) {
                     imageInformations = new HelpMeDataPacket(messagesGameBuffer.get(0));
 
-                    if (System.currentTimeMillis() - startTime - imageInformations.getTime() > MAX_TIME_WAITING) {
+                    if (!BaseManager.useEyeTracker || (System.currentTimeMillis() 
+                            - startTime - imageInformations.getTime() > MAX_TIME_WAITING)) {
+                        
                         removeMessageGame = true;
                         writeImageMessage(imageInformations);
 
@@ -151,8 +150,6 @@ public class HelpMeMessagesManager extends BaseMessagesManager {
                         stupidEye.put("DATA", "-1 -1");
 
                         writeEyeTrackerMessage(new EyeTrackerDataPacket(stupidEye));
-
-                        //System.out.println("Eye tracker vuoto");
                     }
                 }
 

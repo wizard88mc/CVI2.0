@@ -229,7 +229,7 @@ public abstract class WebSocketWithOffsetCalc extends BaseManager {
      */
     public void comunicateStartTime(long time) {
         
-        if (clientConnected != null && BaseManager.useEyeTracker) {
+        if (clientConnected != null) {
             JSONObject packetToSend = new JSONObject();
             packetToSend.put(BaseManager.MESSAGE_TYPE, "START_WORKING");
             packetToSend.put(BaseManager.START_TIME, calculateTimeWithOffset(time));

@@ -3,6 +3,7 @@ package org.java_websocket.eyetracker;
 import java.awt.Point;
 import java.net.URI;
 import java.util.ArrayList;
+import org.java_websocket.BaseManager;
 import org.java_websocket.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.simple.JSONObject;
@@ -31,132 +32,133 @@ public class WebSocketClientTracker extends WebSocketClient
     }
 
     @Override
-    public void onMessage(String message) 
-    {
+    public void onMessage(String message) {
+        
         /**
          * Method to handle messages for the manager
          */
         JSONObject packet = (JSONObject)JSONValue.parse(message);
 
-        if (packet.get("TYPE").equals("CALCULATING")) 
-        {
-            packet.put("DATA", System.currentTimeMillis());
+        if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.CALCULATING)) {
+            
+            packet.put(BaseManager.DATA_IDENTIFIER, System.currentTimeMillis());
             this.send(packet.toJSONString());
         }
-        else if (packet.get("TYPE").equals("START_WORKING")) 
-        {
-            System.out.println("EYE_TRACKER: Start game");
-            long startTime = (Long)packet.get("START_TIME");
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.START_WORKING)) {
             
-            eyeTribeTracker.startSendingData(startTime);
+            if (BaseManager.useEyeTracker) {
+                System.out.println("EYE_TRACKER: Start game");
+                
+                long startTime = (Long)packet.get(BaseManager.START_TIME);
+                eyeTribeTracker.startSendingData(startTime);
+            }
         }
-        else if (packet.get("TYPE").equals("STOP_GAME")) 
-        {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.STOP_GAME)) {
+            
             eyeTribeTracker.stopSendDataToServer();
         }
-        else if (packet.get("TYPE").equals("IDENTIFICATION")) 
-        {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.IDENTIFICATION)) {
+            
             System.out.println("EYE_TRACKER: Identification");
 
-            packet.put("DATA", "EyeTrackerClient");
+            packet.put(BaseManager.DATA_IDENTIFIER, "EyeTrackerClient");
             this.send(packet.toJSONString());
         }
-        else if (packet.get("TYPE").equals("IDENTIFICATION_COMPLETE")) 
-        {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.IDENTIFICATION_COMPLETE)) {
+            
             System.out.println("EYE_TRACKER: Identification complete");
             // Inizio sincronizzazione tempi se non ho salvato da 
             // qualche parte ID della macchina 
 
             JSONObject packetToSend = new JSONObject();
-            packetToSend.put("TYPE", "MACHINE_ID");
-            packetToSend.put("DATA", String.valueOf(eyeTribeTracker.getMachineID()));
+            packetToSend.put(BaseManager.MESSAGE_TYPE, BaseManager.MACHINE_ID);
+            packetToSend.put(BaseManager.DATA_IDENTIFIER, String.valueOf(eyeTribeTracker.getMachineID()));
 
             this.send(packetToSend.toJSONString());
         }
         /**
          * Start Training
          */
-        else if (packet.get("TYPE").equals("START_TRAINING")) {
-            eyeTribeTracker.startCalibration((Long)packet.get("START_TIME"));   
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.START_TRAINING)) {
+            
+            eyeTribeTracker.startCalibration((Long)packet.get(BaseManager.START_TIME));   
         }
-        else if (packet.get("TYPE").equals("TRAINING_SESSION")) 
-        {
-            packet.put("DATA", "true");
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.TRAINING_SESSION)) {
+            
+            packet.put(BaseManager.DATA_IDENTIFIER, "true");
             this.send(packet.toJSONString());
         }
-        else if (packet.get("TYPE").equals("OFFSET_CALCULATION")) {
-            if (packet.get("TODO").equals("true")) 
-            {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.OFFSET_CALCULATION)) {
+            if (packet.get("TODO").equals("true")) {
+                
                 JSONObject packetToSend = new JSONObject();
-                packetToSend.put("TYPE", "START_OFFSET_CALCULATION");
+                packetToSend.put(BaseManager.MESSAGE_TYPE, BaseManager.START_OFFSET_CALCULATION);
 
                 this.send(packetToSend.toJSONString());
             }
-            else 
-            {
+            else {
+                
                 JSONObject packetToSend = new JSONObject();
-                packetToSend.put("TYPE", "READY_TO_PLAY");
+                packetToSend.put(BaseManager.MESSAGE_TYPE, BaseManager.READY_TO_PLAY);
 
                 this.send(packetToSend.toJSONString());
             }
         }
-        else if (packet.get("TYPE").equals("OFFSET_CALCULATION_COMPLETE")) 
-        {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.OFFSET_CALCULATION_COMPLETE)) {
+            
             System.out.println("EYE: Fine calcolo offset");
             // Calcolo dell'offset completato
-            int machineID = ((Long)packet.get("MACHINE_ID")).intValue();
+            int machineID = ((Long)packet.get(BaseManager.MACHINE_ID)).intValue();
             eyeTribeTracker.saveNewMachineID(machineID);
 
             JSONObject packetToSend = new JSONObject();
-            packetToSend.put("TYPE", "READY_TO_PLAY");
+            packetToSend.put(BaseManager.MESSAGE_TYPE, BaseManager.READY_TO_PLAY);
 
             this.send(packetToSend.toJSONString());
         }
-        else if (packet.get("TYPE").equals("SCREEN_MEASURES")) 
-        {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.SCREEN_MEASURES)) {
+            
             System.out.println("EYE TRACKER: Screen dimensions received");
 
-            eyeTribeTracker.setScreenWidthAndHeight(((Long)packet.get("SCREEN_WIDTH")).intValue(), 
-                    ((Long)packet.get("SCREEN_HEIGHT")).intValue());
+            eyeTribeTracker.setScreenWidthAndHeight(((Long)packet.get(BaseManager.SCREEN_WIDTH)).intValue(), 
+                    ((Long)packet.get(BaseManager.SCREEN_HEIGHT)).intValue());
         }
-        else if (packet.get("TYPE").equals("TRAINING_SETTINGS")) 
-        {
-            int numberPoints = ((Long)packet.get("POINTS")).intValue();
-            long pointDuration = (Long)packet.get("POINT_DURATION");
-            long transitionDuration = (Long)packet.get("TRANSITION_DURATION");
-            int pointDiameter = ((Long)packet.get("POINT_DIAMETER")).intValue();
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.TRAINING_SETTINGS)) {
+            
+            int numberPoints = ((Long)packet.get(BaseManager.POINTS)).intValue();
+            long pointDuration = (Long)packet.get(BaseManager.POINT_DURATION);
+            long transitionDuration = (Long)packet.get(BaseManager.TRANSITION_DURATION);
+            int pointDiameter = ((Long)packet.get(BaseManager.POINT_DIAMETER)).intValue();
             
             ArrayList<Point> points = eyeTribeTracker.prepareCalibration(numberPoints, pointDuration, 
                     transitionDuration, pointDiameter);
             
             JSONObject packetToSend = new JSONObject();
-            packetToSend.put("TYPE", "CAL_POINT");
+            packetToSend.put(BaseManager.MESSAGE_TYPE, BaseManager.CAL_POINT);
             
             ArrayList<String> pointsString = new ArrayList<String>();
-            for (Point point: points)
-            {
+            for (Point point: points){
+                
                 pointsString.add(point.x + ";" + point.y);
             }
             packetToSend.put("POINTS", pointsString);
             
             this.send(packetToSend.toJSONString());
         }
-        else if (packet.get("TYPE").equals("TRAINING_VALIDATION")) {
+        else if (packet.get(BaseManager.MESSAGE_TYPE).equals(BaseManager.TRAINING_VALIDATION)) {
             
-            boolean result = (Boolean)packet.get("DATA");
+            boolean result = (Boolean)packet.get(BaseManager.DATA_IDENTIFIER);
             eyeTribeTracker.communicateTrainingResult(result);
         }
     }
 
     @Override
-    public void onClose(int code, String reason, boolean remote) 
-    {
+    public void onClose(int code, String reason, boolean remote) {
         System.out.println("OnClose EyeTracker");
     }
 
     @Override
-    public void onError(Exception ex) 
-    {
+    public void onError(Exception ex) {
         System.out.println("onError EyeTracker");
         System.out.println(ex.toString());
         ex.printStackTrace();

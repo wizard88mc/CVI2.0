@@ -442,7 +442,9 @@ var TrainingManager = {
 		
 		var divContainer = $('<div>');
 		$('<h2>').text('Impostazioni per il training').appendTo(divContainer);
-		$('<p>').text("E' necessario effettuare il training del sistema di eye tracking per continuare. Settare le impostazioni e cliccare su \"Inizia\".")
+		$('<p>').text("E' necessario effettuare il training del sistema di eye" + 
+			"tracking per continuare. Settare le impostazioni e cliccare" + 
+			" su \"Inizia\".")
 			.appendTo(divContainer);
 		
 		tableForm.appendTo(divContainer);
@@ -460,6 +462,9 @@ var TrainingManager = {
 			//width: 'auto',
 			buttons: {
 				"Inizia": function() {
+
+					$(this).dialog("close");
+					$(this).remove();
 						
 					var numberOfPoints = $('select#selectNumberOfPoints').val();
 					var totalSeconds = $('select#selectTimePerPoint').val();
@@ -476,9 +481,6 @@ var TrainingManager = {
 						
 					websocket.send(JSON.stringify(packetWithSettings));
 						
-					$(this).dialog("close");
-					$(this).remove();
-						
 					var dialog = $('<div>').attr('id', 'dialogWaitingCompleteTraining')
 						.attr('title', 'Attendere ...').appendTo('#mainContent');
 							
@@ -490,6 +492,22 @@ var TrainingManager = {
 						draggable: false,
 						closeOnEscape: false
 					});
+				}, 
+				"Salta Training": function() {
+
+					$(this).dialog("close");
+					$(this).remove();
+
+					var packetToSend = {
+						TYPE: 'WITHOUT_TRACKER'
+					};
+
+					websocket.send(JSON.stringify(packetToSend));
+
+					TrainingManager.trainingComplete();
+				},
+				"Annulla": function() {
+					$('#imgGoBack').trigger('click');
 				}
 			}
 		});
@@ -501,7 +519,7 @@ var TrainingManager = {
 		$('#dialogWaitingCompleteTraining').remove();
 		
 		var valueCalibration = message.STARS;
-		var starsContainer = $('<p>');
+		var starsContainer = $('<p>').attr('id', 'starsContainer');
 		
 		for (var i = 0; i < valueCalibration; i++) 
 		{
@@ -514,12 +532,6 @@ var TrainingManager = {
 				.appendTo(starsContainer);
 		}
 		
-		starsContainer.children('img').css({
-			width: '10%',
-			display: 'inline',
-			'margin-left': '3%'
-		});
-		
 		var dialog = $('<div>').attr('id', 'divDialogTrainingEvaluation')
 			.attr('title', 'Risultato').appendTo('#mainContent');
 	
@@ -529,31 +541,25 @@ var TrainingManager = {
 			starsContainer.appendTo(dialog);
 		}
 		
-		var imgResult = null;
+		var imgResult = $('<img>').attr('id', 'imgTrainingResult');
 		if (message.RESULT) {
 
-			imgResult = $('<img>').attr('src', '../images/correct.png')
+			imgResult.attr('src', '../images/correct.png')
 				.attr('alt', 'Calibrazione riuscita');
 		}
 		else {
 
-			imgResult = $('<img>').attr('src', '../images/incorrect.png')
+			imgResult.attr('src', '../images/incorrect.png')
 				.attr('alt', 'Calibrazione non riuscita');
 		}
 
-		imgResult.css({
-			width: '10%',
-			display: 'inline',
-			'margin-left': '3%',
-			'vertical-align': 'middle'
-		});
 		var finalResult = $('<p>').text('Risultato: ');
 		imgResult.appendTo(finalResult);
 		finalResult.appendTo(dialog);
 		
 		var meanError = $('<p>').text('Errore medio: ' + message.AVERAGE_ERROR);
-		if (message.RESULT)
-		{
+		if (message.RESULT) {
+
 			meanErrorRight = $('<p>').text('Errore medio occhio destro: ' 
 					+ message.AVERAGE_ERROR_RIGHT);
 			meanErrorLeft = $('<p>').text('Errore medio occhio sinistro: ' 
@@ -603,26 +609,24 @@ var TrainingManager = {
 						$(this).dialog("close");
 						$(this).remove();
 						
-						var packetGoBack = 
-						{
+						var packetGoBack = {
 							TYPE: 'GO_BACK'
 						};
 						websocket.send(JSON.stringify(packetGoBack));
 						
-						var packetValidation = 
-						{
+						var packetValidation = {
 							TYPE: 'TRAINING_VALIDATION',
 							DATA: false
 						}
 						websocket.send(JSON.stringify(packetValidation));
 						
-						location.replace('../index.html');
+						$('#imgGoBack').trigger('click');
 					}
 				}
 			});
 		}
-		else 
-		{
+		else {
+
 			dialog.dialog({
 				modal: true,
 				draggable: false,
@@ -634,8 +638,7 @@ var TrainingManager = {
 						$(this).dialog("close");
 						$(this).remove();
 						
-						var packetRetry = 
-						{
+						var packetRetry = {
 							TYPE: 'TRAINING_VALIDATION', 
 							DATA: false
 						};
@@ -643,19 +646,41 @@ var TrainingManager = {
 						websocket.send(JSON.stringify(packetRetry));
 						
 						TrainingManager.dialogSelectParameters();
-					}, 
+					},
+					"Salta Training": function() {
+						$(this).dialog("close");
+						$(this).remove();
+						/**
+						 * First step aborting current training
+						 */
+						var packetRetry = {
+							TYPE: 'TRAINING_VALIDATION', 
+							DATA: false
+						};
+						
+						websocket.send(JSON.stringify(packetRetry));
+
+						/**
+						 * Second step is to send packet to not use tracker
+						 */
+						 var packetNoTracker = {
+						 	TYPE: 'WITHOUT_TRACKER'
+						 };
+
+						 websocket.send(JSON.stringify(packetNoTracker));
+
+						 TrainingManager.trainingComplete();
+					},
 					"Annulla": function() {
 						$(this).dialog("close");
 						$(this).remove();
 						
-						var packetGoBack = 
-						{
+						var packetGoBack = {
 							TYPE: 'GO_BACK'
 						};
 						websocket.send(JSON.stringify(packetGoBack));
 						
-						var packetValidation = 
-						{
+						var packetValidation = {
 							TYPE: 'TRAINING_VALIDATION',
 							DATA: false
 						}
@@ -669,5 +694,4 @@ var TrainingManager = {
 	},
 	
 	trainingComplete: function() {}
-
 };

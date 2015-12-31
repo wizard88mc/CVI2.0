@@ -127,9 +127,8 @@ var HelpMeNamespace = {
 		else if (packet.TYPE == 'CALIBRATION_RESULT') {
 
 			TrainingManager.trainingResult(packet);
-			TrainingManager.trainingComplete = HelpMeNamespace.trainingComplete;
 		}
-		else if (packet.TYPE == 'EYE_TRACKER_NOT_READY') {
+		/*else if (packet.TYPE == 'EYE_TRACKER_NOT_READY') {
 
 			$('<p>').text('Il sistema di eye-tracking non è collegato. Si desidera procedere con la visita senza analisi del movimento degli occhi?')
 			.appendTo(
@@ -183,7 +182,7 @@ var HelpMeNamespace = {
 					}
 				}
 			});
-		}
+		}*/
 		else if (packet.TYPE == 'PRESENTATION_COMPLETE') {
 
 			$('#dialogWaitingEndPresentation').dialog('close').remove();
@@ -477,8 +476,10 @@ var HelpMeNamespace = {
 	
 	prepareTable: function() {
 		
-		var table = $('<table>').attr('id', 'tableResultsHelpMe').appendTo('#mainContent');
-		var row = $('<tr>').appendTo($('<thead>').addClass('ui-widget-header').appendTo(table));
+		var table = $('<table>').attr('id', 'tableResultsHelpMe')
+			.addClass('alignCenter').appendTo('#mainContent');
+		var row = $('<tr>').appendTo($('<thead>')
+			.addClass('ui-widget-header').appendTo(table));
 		$('<th>').text('Oggetto').appendTo(row);
 		$('<th>').text('Famiglia Target').appendTo(row);
 		$('<th>').text('Tempo risposta (ms)').appendTo(row);
@@ -504,8 +505,8 @@ var HelpMeNamespace = {
 		ratio = total / screenWidth;
 		canvasObject.height = screenHeight * ratio;
 		
-		console.log(canvasObject.width);
-		console.log(canvasObject.height);
+		/*console.log(canvasObject.width);
+		console.log(canvasObject.height);*/
 		
 		context = canvasObject.getContext('2d');
 		context.lineWidth = 3;
@@ -544,6 +545,8 @@ var HelpMeNamespace = {
 		$('<li>').addClass('eyeCenter').text('Eyes position').appendTo(list);
 	}
 };
+
+TrainingManager.trainingComplete = HelpMeNamespace.trainingComplete;
 
 /**
  * Function called when the WebSocket port is open, first step is to require

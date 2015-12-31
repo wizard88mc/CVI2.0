@@ -513,23 +513,11 @@ buildDialogChangeSpeed: function(settingsToUpdate, elementToUpdate) {
 
 deleteLevel: function(exerciseNumber, divToRemove) {
 	
-	divToRemove.nextAll('div.divSetExercises').find('p.titleExercise').each(function() {
-		
-		var value = $(this).text();
-		var elements = value.split(" ");
-		/**
-		 * Updating the number of the exercise
-		 */
-		elements[elements.length - 1] = elements[elements.length - 1] - 1;
-		$(this).text(elements.join(" "));
-		
-	});
 	divToRemove.remove();
 	exercisesToSend[exerciseNumber] = null;
 },
 
 createNewExerciseEditer: function(exerciseOrder, numberExerciseLabel, settings) {
-	
 	
 	exercisesToSend[exerciseOrder] = new GameSettings();
 	
@@ -545,9 +533,14 @@ createNewExerciseEditer: function(exerciseOrder, numberExerciseLabel, settings) 
 			
 			option.appendTo(select);
 		}
+
+		select.on('change', function() {
+			var newValue = $(this).children('option[selected="selected"]').val();
+			exercisesToSend[exerciseID].numberOfRepetitions = Number(newValue);
+		})
 		
 		select.appendTo(divToAppend);
-	}
+	};
 
 	var divSetExercises = $('<div>').attr('id', 'divSetExercises' + exerciseOrder)
 		.addClass('divSetExercises alignLeft ui-widget-content ui-corner-all ui-helper-clearfix');
@@ -556,22 +549,15 @@ createNewExerciseEditer: function(exerciseOrder, numberExerciseLabel, settings) 
 		divSetExercises.appendTo('#mainContent');
 	}
 	else {
-		divSetExercises.insertBefore('#divButtons');
+		divSetExercises.insertBefore('#buttons');
 	}
 	
 	var spanDeleteLevel = $('<span>').text('Elimina livello')
-		.css({
-			float: 'right',
-			'text-align': 'center',
-			cursor: 'pointer'
-		});
+		.addClass('eliminaLivello');
 	
-	$('<img>').attr('src', '../images/close.png').css({
-		width: '9%',
-		'vertical-align': 'middle'
-	}).appendTo(spanDeleteLevel);
+	$('<img>').attr('src', '../images/close.png').appendTo(spanDeleteLevel);
 	
-	var paragraph = $('<p>').text('Esercizio personalizzato ' + numberExerciseLabel)
+	var paragraph = $('<p>').text('Esercizio personalizzato')
 		.addClass('ui-state-default ui-corner-all ui-helper-clearfix titleExercise')
 		.appendTo(divSetExercises);
 	
@@ -588,7 +574,7 @@ createNewExerciseEditer: function(exerciseOrder, numberExerciseLabel, settings) 
 			'text-align': 'center',
 			padding: '0.5em'
 		}).appendTo(divSetExercises);
-	$('<p>').text('Numero di ripetizioni dell\'esercizio: ').addClass('smallLabel')
+	$('<p>').text("Numero di ripetizioni dell'esercizio: ").addClass('smallLabel')
 		.css('display', 'inline-block').appendTo(divNumberRepetitions);
 	
 	if (settings != null) {
@@ -614,21 +600,16 @@ createNewExerciseEditer: function(exerciseOrder, numberExerciseLabel, settings) 
 		'margin-top': '1.0em'
 	}).text('Colore di sfondo: ').appendTo(divLeftSection);
 	
-	$('<div>').attr('id', 'divBackgroundColorSmallPreview'+exerciseOrder)
+	$('<div>').attr('id', 'divBackgroundColorSmallPreview' + exerciseOrder)
+		.addClass('backgroundColorSmallPreview')
 		.css({
-			width: '1.5em',
-			height: '1.5em',
-			display: 'inline-block',
-			'vertical-align': 'middle',
-			'margin-left': '0.8em',
 			'background-color': exercisesToSend[exerciseOrder].backgroundColor,
 		}).appendTo(divLeftSection);
 		
-	$('<div>').attr('id', 'changeBackgroundColor'+exerciseOrder).text('Modifica colore di sfondo')
-		.css({
-			'margin-left': '1.0em',
-			'font-size': '0.7em'
-		}).appendTo(divLeftSection)
+	$('<div>').attr('id', 'changeBackgroundColor' + exerciseOrder)
+		.text('Modifica colore di sfondo')
+		.addClass('changeBackgroundColor')
+		.appendTo(divLeftSection)
 		.button()
 		.click(function(event) {
 			CatchMeSettingsNamespace.buildDialogChangeBackgroundColor(exercisesToSend[exerciseOrder], 
@@ -638,22 +619,16 @@ createNewExerciseEditer: function(exerciseOrder, numberExerciseLabel, settings) 
 	/**
 	 * Section to modify the movements of the image
 	 */
-	$('<span>').attr('id', 'movementsChoosed'+exerciseOrder)
+	$('<span>').attr('id', 'movementsChoosed' + exerciseOrder)
 		.css({
-		'float': 'none',
-		'font-weight': 'normal'
+			'float': 'none',
+			'font-weight': 'normal'
 		}).appendTo(
 			$('<p>').addClass('smallLabel inline_block')
 				.text('Movimenti: ').appendTo(divRightSection)
 			);
-	$('<div>').attr('id', 'changeMovements').text('Modifica movimenti')
-		.css({
-			'margin-left': '1.0em',
-			'font-size': '0.7em',
-			'margin-bottom': '0.8em',
-			'vertical-align': 'middle',
-			'margin-top': '1.0em'
-		}).appendTo(divRightSection)
+	$('<div>').addClass('changeMovements').text('Modifica movimenti')
+		.appendTo(divRightSection)
 		.button()
 		.click(function(event) {
 			

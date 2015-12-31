@@ -90,8 +90,11 @@ body {
 }
 
 #imgGoBack {
+	float: right;
 	cursor: pointer;
 	width: 7em;
+	background-color: #FFF;
+	margin-right: 1.5em;
 }
 
 footer {
@@ -113,3 +116,18 @@ em {
 	font-style: italic;
 }
 
+/**
+ * TRAINING STYLE
+ */
+#starsContainer img {
+	width: 10%;
+	display: inline;
+	margin-left: 3%;
+}
+
+#imgTrainingResult {
+	width: 10%;
+	display: inline;
+	margin-left': 3%;
+	vertical-align': middle;
+}

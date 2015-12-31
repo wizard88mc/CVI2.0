@@ -13,8 +13,8 @@ import org.json.simple.JSONObject;
  */
 public class CatchMeMessagesManager extends BaseMessagesManager {
     
-    public CatchMeMessagesManager(String patientID, int visitID, boolean withTracker) {
-        super(patientID, visitID, withTracker);
+    public CatchMeMessagesManager(String patientID, int visitID) {
+        super(patientID, visitID);
     }
     
     @Override
@@ -22,9 +22,10 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
         
         while (!endGame) {
             
-            if (this.withEyeTracker) {
+            if (BaseManager.useEyeTracker) {
                 synchronized(bufferSynchronizer) {
-                    while (messagesGameBuffer.isEmpty() && messagesEyeTrackerBuffer.isEmpty()) {
+                    while (messagesGameBuffer.isEmpty() && 
+                            messagesEyeTrackerBuffer.isEmpty()) {
                         try {
                             bufferSynchronizer.wait();
                         }
@@ -115,7 +116,10 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                 else if (messagesEyeTrackerBuffer.isEmpty()) {
                     messageGame = new CatchMeDataPacket(messagesGameBuffer.get(0));
 
-                    if (System.currentTimeMillis() - startTime - messageGame.getTime() > MAX_TIME_WAITING) {
+                    if (!BaseManager.useEyeTracker || 
+                        (System.currentTimeMillis() - 
+                            (startTime - messageGame.getTime()) > MAX_TIME_WAITING)) {
+                        
                         removeMessageGame = true;
                         writeGameMessage(messageGame);
 
@@ -197,7 +201,11 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
         
         System.out.println("MessageManager has ended");
     }
-        
+    
+    /**
+     * Writes data about the touch position and the image position on the screen
+     * @param packet a CatchMeDataPacket with data of touch and image
+     */
     void writeGameMessage(CatchMeDataPacket packet) {
 
         try {
@@ -213,6 +221,10 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
         }
     }
 
+    /**
+     * Writes a string on the file with the delta values
+     * @param message the text to write
+     */
     void writeDeltaMessage(String message) {
         try {
             deltaWriter.write(message);

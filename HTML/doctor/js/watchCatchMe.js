@@ -44,12 +44,7 @@ var CatchMeNamespace = {
 			
 			$('#mainContent div').remove();
 			
-			$('<div>').attr('id', 'divGrafo').appendTo('#mainContent')
-				.css({
-					width: '90%',
-					margin: 'auto',
-					padding: '1.0em'
-			});
+			$('<div>').attr('id', 'divGrafo').appendTo('#mainContent');
 			CatchMeNamespace.prepareChart();
 			
 			/**
@@ -57,8 +52,9 @@ var CatchMeNamespace = {
 			 * to start the game
 			 */
 		}
-		else if (dataReceived.TYPE == "TRAINING_SESSION" && dataReceived.DATA == "false") 
-		{
+		else if (dataReceived.TYPE == "TRAINING_SESSION" && 
+			dataReceived.DATA == "false") {
+
 			websocket.onmessage = CatchMeNamespace.manageMessagesGame;
 		
 			$('<p>').text('Non appena tutto sarà pronto, cliccare su Ok per iniziare')
@@ -88,70 +84,18 @@ var CatchMeNamespace = {
 				}
 			});
 		}
-		else if (dataReceived.TYPE == "TRAINING_SESSION" && dataReceived.DATA == "true") 
-		{
+		else if (dataReceived.TYPE == "TRAINING_SESSION" && 
+			dataReceived.DATA == "true") {
+			
 			/**
 			 * Showing dialog to start training session
 			 */
 			TrainingManager.screenWidth = screenWidth;
 			TrainingManager.dialogSelectParameters();
 		}
-		else if (dataReceived.TYPE == "CALIBRATION_RESULT") 
-		{
+		else if (dataReceived.TYPE == "CALIBRATION_RESULT") {
 			TrainingManager.trainingResult(dataReceived);
-			TrainingManager.trainingComplete = CatchMeNamespace.trainingComplete;
 		}
-		else if (dataReceived.TYPE == "EYE_TRACKER_NOT_READY") {
-			
-			$('<p>').text('Il sistema di eye-tracking non è collegato. Si ' + 
-				'desidera procedere con la visita senza analisi del movimento ' + 
-				'degli occhi?')
-				.appendTo(
-					$('<div>').attr('id', 'dialogTrackerNotReady')
-					.attr('title', 'Tracciamento degli occhi non collegato')
-					.appendTo('#mainContent')
-				)
-				.dialog({
-					modal: true,
-					resizable: false,
-					closeOnEscape: false,
-					draggable: false,
-					width: getScreenWidth() * 0.5,
-					buttons: {
-						"Prosegui senza": function() {
-							$(this).dialog("close");
-							$(this).remove();
-							
-							withEyeTracker = false;
-							
-							CatchMeNamespace.trainingComplete();
-							
-						},
-						"Attendi collegamento": function() {
-							console.log("Attendi collegamento");
-							$(this).dialog("close");
-							$(this).remove();
-							$('<p>').text("Collegare il sistema di eye-tracking per continuare...").appendTo(
-								$('<div>').attr('id', '#dialogWaitingTracker').attr('title', 'In Attesa...').appendTo('#mainContent')
-								.dialog({
-									modal: true,
-									resizable: false,
-									closeOnEscape: false,
-									draggable: false,
-									width: getScreenWidth() * 0.4
-								})
-							);
-							
-							var packetToSend = {
-								TYPE: 'WAITING_TRACKER'
-							};
-							
-							websocket.send(JSON.stringify(packetToSend));
-						}
-					}
-				});
-			}
-		//else if ()
 	},
 	
 	updateChart: function() {
@@ -363,6 +307,8 @@ var CatchMeNamespace = {
 	}
 };
 
+TrainingManager.trainingComplete = CatchMeNamespace.trainingComplete;
+
 function presentationComplete() {
 
 	var packetToSend = {
@@ -377,7 +323,6 @@ function presentationComplete() {
 
 		setTimeout(CatchMeSettingsNamespace.requestScreenClient, 3000);
 	}
-
 }
 
 $('document').ready(function() {

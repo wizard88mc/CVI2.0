@@ -16,19 +16,25 @@ import org.json.simple.JSONObject;
 
 public class ServerManager {
     
+    private static String HOST = "localhost";
+    
+    private static final long MINIMUM_INCREMENT = 5000;
+    
+    private static final int EYE_TRACKER_PORT = 8000;
+    private static final int CHILD_CLIENT_PORT = 8001;
+    private static final int DOCTOR_CLIENT_PORT = 8002;
+    
     private EyeTrackerManager clientEyeTracker = null;
     private IPADClientManager clientChild = null;
     private DoctorClientManager clientDoctor = null;
     
-    private boolean eyeTrackerReady = false;
-    private boolean gameReady = false;
-    private boolean doctorClientReady = false;
+    private static boolean gameInAction = false;
     
-    protected void timeToStart() 
-    {
-        long minimumIncrement = 5000;
+    protected void timeToStart() {
         
-        long timeToStart = new Date().getTime() + minimumIncrement;
+        gameInAction = true;
+        
+        long timeToStart = new Date().getTime() + MINIMUM_INCREMENT;
         clientEyeTracker.comunicateStartTime(timeToStart);
         clientChild.comunicateStartTime(timeToStart);
     }
@@ -40,12 +46,19 @@ public class ServerManager {
         clientDoctor.start();
     }
     
-    public void stopGame(JSONObject packet) 
-    {
-        clientEyeTracker.sendPacket(packet);
-        clientChild.sendPacket(packet);
-        clientDoctor.sendPacket(packet);
-        WebSocketWithOffsetCalc.messageManager.gameIsEnded();
+    /**
+     * Stops the current game
+     * @param packet 
+     */
+    public void stopGame(JSONObject packet) {
+        
+        if (gameInAction) {
+            gameInAction = false;
+            clientEyeTracker.sendPacket(packet);
+            clientChild.sendPacket(packet);
+            clientDoctor.sendPacket(packet);
+            WebSocketWithOffsetCalc.messageManager.gameIsEnded();
+        }
     }
     
     public void messageFromDoctorToChildClient(JSONObject packet) {
@@ -53,32 +66,27 @@ public class ServerManager {
         clientChild.sendPacket(packet);
     }
     
-    public ServerManager() throws UnknownHostException
-    {
-        int eyeTrackerPort = 8000;
-        int ipadPort = 8001;
-        int doctorPort = 8002;
+    public ServerManager() throws UnknownHostException {
         
-        clientDoctor = new DoctorClientManager(doctorPort);
-        clientEyeTracker = new EyeTrackerManager(eyeTrackerPort);
-        clientChild = new IPADClientManager(ipadPort);
+        clientDoctor = new DoctorClientManager(DOCTOR_CLIENT_PORT);
+        clientEyeTracker = new EyeTrackerManager(EYE_TRACKER_PORT);
+        clientChild = new IPADClientManager(CHILD_CLIENT_PORT);
         
         WebSocketWithOffsetCalc.setDoctorClientManager(clientDoctor);
     }
     
-    public void stopEverything()
-    {
-        try
-        {
+    public void stopEverything() {
+        try {
+            
+            gameInAction = false;
+            
             clientDoctor.stop();
             clientEyeTracker.stop();
             clientChild.stop();
         }
-        catch(Exception exc) 
-        {
+        catch(Exception exc) {
             exc.printStackTrace();
         }
-        
     }
     
     /* Definire un metodo che permetta di chiudere applicazione
@@ -86,13 +94,13 @@ public class ServerManager {
      */
     public static void main(String args[]) {
         WebSocket.DEBUG = false;
-        String host = "localhost";
+        
         //host = "ciman.math.unipd.it";
         
         if (args.length != 0) {
-            host = args[0];
+            HOST = args[0];
         }
-        System.out.println(host);
+        System.out.println(HOST);
         
         ServerManager manager = null;
         
@@ -106,29 +114,31 @@ public class ServerManager {
             System.out.println("Server Started");
             
             Thread.sleep(3000);
-            EyeTribeTracker eyeTracker = new EyeTribeTracker(host, 8000);
+            EyeTribeTracker eyeTracker = new EyeTribeTracker(HOST, 
+                    EYE_TRACKER_PORT);
             eyeTracker.connect();
             
             //EyeTrackerSimulator simulator = new EyeTrackerSimulator(host, 8000);
             //simulator.connect();
         }
         catch(BindException exc) {
-            JOptionPane.showMessageDialog(null, "Un'altra istanza del programma è già avviata.\n Chiuderla e riavviare.", 
-                    "Errore", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Un'altra istanza del programma" + 
+                    "è già avviata.\n Chiuderla e riavviare.", "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
         }
         catch (Exception exc) {
-            if (exc.getMessage().equals("EXCEPTION_NO_EYE_TRIBE_SERVER_RUNNING"))
-            {
-                JOptionPane.showMessageDialog(null, "Eye Tribe non partito. E' stato attivato il programma necessario?", 
+            if (exc.getMessage().equals("EXCEPTION_NO_EYE_TRIBE_SERVER_RUNNING")) {
+                
+                JOptionPane.showMessageDialog(null, "Eye Tribe non partito. " + 
+                        "E' stato attivato il programma necessario?", 
                         "Tracker non avviato", JOptionPane.ERROR_MESSAGE);
             }
             //exc.printStackTrace();
-            if (manager != null)
-            {
+            if (manager != null) {
+                
                 manager.stopEverything();
                 System.exit(0);
             }
         }
     }
-    
 }

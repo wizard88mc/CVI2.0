@@ -40,6 +40,38 @@
 	font-size: 0.9em;
 }
 
+.changeMovements {
+	margin-left: 1.0em;
+	font-size: 0.7em;
+	margin-bottom: 0.8em;
+	vertical-align: middle;
+	margin-top: 1.0em;
+}
+
+.backgroundColorSmallPreview {
+	width: 1.5em;
+	height: 1.5em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left': 0.8em;
+}
+
+.changeBackgroundColor {
+	margin-left: 1.0em;
+	font-size: 0.7em;
+}
+
+.eliminaLivello {
+	float: right;
+	text-align: center;
+	cursor: pointer;
+}
+
+.eliminaLivello img {
+	width: 9%;
+	vertical-align: middle;
+}
+
 #divColoreSfondo, #divColoreImmagine, #divMovimenti, #divSpeed, #divDimensions {
 	margin-bottom: 1.0em;
 	padding-bottom: 0em;
