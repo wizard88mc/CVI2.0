@@ -22,6 +22,9 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
         
         while (!endGame) {
             
+            /**
+             * If using the EyeTracker
+             */
             if (BaseManager.useEyeTracker) {
                 synchronized(bufferSynchronizer) {
                     while (messagesGameBuffer.isEmpty() && 
@@ -39,11 +42,11 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                 boolean removeMessageGame = false;
                 boolean removeMessageEyeTracker = false;
 
-                // Situazione in cui tutti e due i buffer hanno dei pacchetti 
-                // al loro interno
-                // Se Delta tempi dentro un certo massimo, li metto insieme
-                // con tempo spedito che sarà il tempo medio, altrimenti 
-                // invio quello con tempo più basso
+                /**
+                 * Both buffers have packets, if the Delta of the timestamps
+                 * is inside the maximum possible range we put them together, 
+                 * otherwise I send the one with the lowest timestamp
+                 */
                 if (!messagesEyeTrackerBuffer.isEmpty() && !messagesGameBuffer.isEmpty()) {
 
                     messageGame = new CatchMeDataPacket(messagesGameBuffer.get(0));
@@ -55,9 +58,9 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                     Long deltaTime = Math.abs(timeMessageGame - timeEyeTrackerMessage);
 
                     /**
-                    * Costruisco pacchetto con tutti e due i dati
-                    * Devo prima scriverlo però
-                    */
+                     * Building the packet with information from the game and 
+                     * the EyeTracker, timestamp is the average of both
+                     */
                     if (deltaTime <= MAX_DIFFERENCE) {
 
                         removeMessageGame = true;
@@ -73,11 +76,9 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                         writeGameMessage(messageGame);
                     }
                     /**
-                    * Pacchetto conterrà solo informazioni riguardanti il 
-                    * gioco, non ho ricevuto nulla di eye tracker oppure 
-                    * ho ricevuto qualcosa relativo ad un tempo successivo
-                    * 
-                    */
+                     * The packet will contain only information from the game,
+                     * no information from the EyeTracker
+                     */
                     else if (timeMessageGame < timeEyeTrackerMessage) {
 
                         removeMessageGame = true;
@@ -91,13 +92,11 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                         writeEyeTrackerMessage(messageEyeTracker);
                         
                         clearEyeTrackerData = true;
-                        //System.out.println("timeMessageGame < timeEyeTrackerMessage");
                     }
                     /**
-                    * Ho solo informazioni riguardanti l'eye-tracker
-                    * oppure informazioni riguardanti gioco relative ad 
-                    * istante successivo (CASO MOLTO RARO)
-                    */
+                     * Only information from the EyeTracker or information 
+                     * of the game of a future timestamp
+                     */
                     else if (timeEyeTrackerMessage < timeMessageGame) {
 
                         removeMessageEyeTracker = true;
@@ -108,7 +107,8 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                     messageEyeTracker = 
                             new EyeTrackerDataPacket(messagesEyeTrackerBuffer.get(0));
 
-                    if (System.currentTimeMillis() - startTime - messageEyeTracker.getTime() > MAX_TIME_WAITING) {
+                    if (System.currentTimeMillis() - 
+                            (startTime + messageEyeTracker.getTime()) > MAX_TIME_WAITING) {
 
                         removeMessageEyeTracker = true;
                     }
@@ -116,9 +116,8 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                 else if (messagesEyeTrackerBuffer.isEmpty()) {
                     messageGame = new CatchMeDataPacket(messagesGameBuffer.get(0));
 
-                    if (!BaseManager.useEyeTracker || 
-                        (System.currentTimeMillis() - 
-                            (startTime - messageGame.getTime()) > MAX_TIME_WAITING)) {
+                    if (System.currentTimeMillis() - 
+                            (startTime + messageGame.getTime()) > MAX_TIME_WAITING) {
                         
                         removeMessageGame = true;
                         writeGameMessage(messageGame);
@@ -129,8 +128,6 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
 
                         messageEyeTracker = new EyeTrackerDataPacket(stupidEye);
                         writeEyeTrackerMessage(messageEyeTracker);
-                        
-                        //System.out.println("Eye tracker vuoto");
                     }
                 }
                 if (removeMessageEyeTracker || removeMessageGame) {
@@ -140,7 +137,6 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                             synchronized(bufferSynchronizer) {
                                 messagesEyeTrackerBuffer.remove(0);
                             }
-
                         }
                         if (removeMessageGame) {
                             synchronized(bufferSynchronizer) {
@@ -160,12 +156,17 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                         */
 
                     if (messageGame != null) {
-                        CatchMeDoctorMessage message = new CatchMeDoctorMessage(messageGame, messageEyeTracker);
+                        CatchMeDoctorMessage message = 
+                                new CatchMeDoctorMessage(messageGame, 
+                                        messageEyeTracker);
                         writeDeltaMessage(message.toString());
                         doctorManager.sendMessageToDoctorClient(message);
                     }
                 }
             }
+            /**
+             * If not using the EyeTracker
+             */
             else {
                 synchronized(bufferSynchronizer) {
                     while (messagesGameBuffer.isEmpty()) {
@@ -177,25 +178,27 @@ public class CatchMeMessagesManager extends BaseMessagesManager {
                 }
                 
                 if (!messagesGameBuffer.isEmpty()) {
-                    CatchMeDataPacket packet = new CatchMeDataPacket(messagesGameBuffer.get(0));
+                    CatchMeDataPacket packet = 
+                            new CatchMeDataPacket(messagesGameBuffer.get(0));
                     
                     writeGameMessage(packet);
                     JSONObject stupidEye = new JSONObject();
                     stupidEye.put("TIME", packet.getTime());
                     stupidEye.put("DATA", "-1 -1");
 
-                    EyeTrackerDataPacket messageEyeTracker = new EyeTrackerDataPacket(stupidEye);
+                    EyeTrackerDataPacket messageEyeTracker = 
+                            new EyeTrackerDataPacket(stupidEye);
                     writeEyeTrackerMessage(messageEyeTracker);
                     
                     synchronized(bufferSynchronizer) {
                         messagesGameBuffer.remove(0);
                     }
                     
-                    CatchMeDoctorMessage message = new CatchMeDoctorMessage(packet, messageEyeTracker);
+                    CatchMeDoctorMessage message = 
+                            new CatchMeDoctorMessage(packet, messageEyeTracker);
                     writeDeltaMessage(message.toString());
                     doctorManager.sendMessageToDoctorClient(message);
                 }
-                
             }
         }
         

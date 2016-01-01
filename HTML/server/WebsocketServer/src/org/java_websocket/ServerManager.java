@@ -100,7 +100,9 @@ public class ServerManager {
         if (args.length != 0) {
             HOST = args[0];
         }
-        System.out.println(HOST);
+        if (WebSocket.DEBUG) {
+            System.out.println(HOST);
+        }
         
         ServerManager manager = null;
         
@@ -111,7 +113,7 @@ public class ServerManager {
             
             manager.startManagers();
             
-            System.out.println("Server Started");
+            System.out.println("**** SERVER STARTED ****");
             
             Thread.sleep(3000);
             EyeTribeTracker eyeTracker = new EyeTribeTracker(HOST, 

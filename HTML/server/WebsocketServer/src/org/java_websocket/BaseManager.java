@@ -100,13 +100,17 @@ public abstract class BaseManager extends WebSocketServer {
     
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        System.out.println("Opening connection in " + clientType + " Manager");
+        if (WebSocket.DEBUG) {
+            System.out.println("Opening connection in " + clientType + " Manager");
+        }
         
         JSONObject message = new JSONObject();
         message.put(BaseManager.MESSAGE_TYPE, BaseManager.IDENTIFICATION);
         conn.send(message.toJSONString());
         
-        System.out.println("Sending identification request");
+        if (WebSocket.DEBUG) {
+            System.out.println("Sending identification request");
+        }
     }
     
     public boolean checkClientType(String answer) {

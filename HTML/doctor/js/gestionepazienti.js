@@ -31,8 +31,11 @@ function drawCatchMeTable(visits) {
 		});
 	}
 
-	var table = $('<table>').attr('id', 'tableVisitsCatchMe');
-	$('<caption>').text('Gioco Prendimi!').addClass('ui-widget-header').appendTo(table);
+	var table = $('<table>').attr('id', 'tableVisitsCatchMe')
+		.addClass('alignCenter');
+	$('<caption>').text('Gioco Prendimi!')
+		.addClass('ui-widget-header').appendTo(table);
+
 	var thead = $('<thead>').addClass('ui-widget-header').appendTo(table);
 	$('<tr>').appendTo(thead);
 	$('<th>').text('Data').appendTo(thead);
@@ -69,23 +72,23 @@ function drawCatchMeTable(visits) {
 		$('<td>').text(touchEval).appendTo(row);
 		
 		if (visits[element].IS_AT_HOME == true) {
-			var image = $('<img>').attr('src', 'images/home.png').attr('alt', 'Visita a casa');
-			image.appendTo($('<td>').addClass('home').appendTo(row));
+			$('<img>').attr('src', 'images/home.png')
+				.attr('alt', 'Visita a casa').appendTo(
+					$('<td>').addClass('home').appendTo(row));
 		}
 		else {
-			var image = $('<img>').attr('src', 'images/hospital.png').attr('alt', 'Visita in studio');
-			image.appendTo($('<td>').addClass('hospital').appendTo(row));
+			$('<img>').attr('src', 'images/hospital.png')
+				.attr('alt', 'Visita in studio').appendTo(
+					$('<td>').addClass('hospital').appendTo(row));
 		}
 		
-		var image = $('<img>').attr('src', '../images/navigate-right.png').attr('alt', 'Visualizza grafo')
-				.addClass('watchButton');
-							
-		image.click(function() {
+		var image = $('<img>').attr('src', '../images/navigate-right.png')
+			.attr('alt', 'Visualizza grafo').addClass('watchButton')
+			.click(function() {
 
-			console.log("clicking");
-			var id = $(this).parent().children('input[name=visitID]').attr('value');
-			makeRequestForGraphData(id);
-		});
+				var id = $(this).parent().children('input[name=visitID]').attr('value');
+				makeRequestForGraphData(id);
+			});
 
 		var cell = $('<td>').appendTo(row);
 		image.appendTo(cell);
@@ -101,8 +104,6 @@ function drawCatchMeTable(visits) {
 	
 	$('#divChooseOptions #divCheckboxExercises input:checkbox').change();
 }
-	
-
 
 function drawHelpMeTable(visits) {
 	
@@ -119,7 +120,7 @@ function drawHelpMeTable(visits) {
 		});
 	}
 
-	var table = $('<table>').attr('id', 'tableVisitsHelpMe');
+	var table = $('<table>').attr('id', 'tableVisitsHelpMe').addClass('alignCenter');
 	$('<caption>').text('Gioco Aiutami!').addClass('ui-widget-header').appendTo(table);
 	var thead = $('<thead>').addClass('ui-widget-header').appendTo(table);
 	$('<tr>').appendTo(thead);
@@ -154,16 +155,18 @@ function drawHelpMeTable(visits) {
 		$('<td>').text(wrong).appendTo(row);
 		
 		if (visits[element].IS_AT_HOME == true) {
-			var image = $('<img>').attr('src', 'images/home.png').attr('alt', 'Visita a casa');
-			image.appendTo($('<td>').addClass('home').appendTo(row));
+			$('<img>').attr('src', 'images/home.png')
+				.attr('alt', 'Visita a casa').appendTo(
+					$('<td>').addClass('home').appendTo(row));
 		}
 		else {
-			var image = $('<img>').attr('src', 'images/hospital.png').attr('alt', 'Visita in studio');
-			image.appendTo($('<td>').addClass('hospital').appendTo(row));
+			$('<img>').attr('src', 'images/hospital.png')
+				.attr('alt', 'Visita in studio').appendTo(
+					$('<td>').addClass('hospital').appendTo(row));
 		}
 		
-		var image = $('<img>').attr('src', '../images/navigate-right.png').attr('alt', 'Visualizza esercizi')
-				.addClass('watchButton');
+		var image = $('<img>').attr('src', '../images/navigate-right.png')
+			.attr('alt', 'Visualizza esercizi').addClass('watchButton');
 							
 		image.click(function() {
 
@@ -174,7 +177,8 @@ function drawHelpMeTable(visits) {
 		var cell = $('<td>').appendTo(row);
 		
 		image.appendTo(cell);
-		$('<input>').attr('type', 'hidden').attr('name', 'visitID').val(visitID).appendTo(cell);
+		$('<input>').attr('type', 'hidden').attr('name', 'visitID')
+			.val(visitID).appendTo(cell);
 		
 		if (body != null) {
 			row.appendTo(body);
@@ -186,31 +190,13 @@ function drawHelpMeTable(visits) {
 			
 	$('#divChooseOptions #divCheckboxExercises input:checkbox').change();
 }
-
-function updateRowsColorTable(table) {
 	
-	$(table).find('tbody tr').filter(function() {
-		return $(this).css('display') != 'none';
-	}).each(function(index) {
-					
-		if (index % 2 == 0) {
-			$(this).addClass('alternate');
-		}
-		else {
-			$(this).removeClass('alternate');
-		}
-	});
-	
-}
-	
-
 function drawTable(newTable) {
 	
 	var visits = listOfPatients[currentPatientID];
 	$('#imgGoBack').off('click').on('click', function() {
 		location.replace('../index.html');
 	});
-	
 	
 	if (newTable) {
 		if (visits.CatchMe.length > 0) {
@@ -238,10 +224,11 @@ function drawTable(newTable) {
 			
 			if ($('#divNoVisitsFound').length == 0) {
 				
-				$('<div>').attr('id', 'divNoVisitsFound').addClass('ui-state-error ui-corner-all')
+				$('<div>').attr('id', 'divNoVisitsFound')
+					.addClass('ui-state-error ui-corner-all')
 					.appendTo('#divTableContainer');
-				$('<p>').text('Attenzione: Nessuna visita trovata per il paziente selezionato')
-					.appendTo('#divNoVisitsFound');
+				$('<p>').text('Attenzione: Nessuna visita trovata per il ' + 
+					'paziente selezionato').appendTo('#divNoVisitsFound');
 					
 				$('#divNoVisitsFound').fadeIn(2000);
 			}
@@ -249,7 +236,6 @@ function drawTable(newTable) {
 				$('#divNoVisitsFound').fadeIn();
 			}
 		}
-		
 	}
 	else {
 		$('#imgPreloaderMiddle').fadeOut(1000, function() {
@@ -263,17 +249,15 @@ function drawTable(newTable) {
 			else if ($('#selectGame').val() == "") {
 				$('#divTableContainer table').fadeIn();
 			}
-			
 		});
 	}
-		
 }
 
 function savePatientVisits(patientID) {
 	
 	if ($('#divTableContainer').length == 0) {
 		
-		$('<div>').attr('id', 'divTableContainer').appendTo('#divMainContent');
+		$('<div>').attr('id', 'divTableContainer').appendTo('#mainContent');
 	}
 	
 	if (patientID != '') {
@@ -288,7 +272,8 @@ function savePatientVisits(patientID) {
 		if ($('#imgPreloaderMiddle').length == 0) {
 			$('<img>').attr('id', 'imgPreloaderMiddle')
 				.attr('alt', 'In attesa dati visite')
-				.attr('src', '../images/preloader.gif').appendTo('#divTableContainer');
+				.attr('src', '../images/preloader.gif')
+				.appendTo('#divTableContainer');
 		}
 		
 		$('#imgPreloaderMiddle').fadeIn(1000, function() {
@@ -397,21 +382,23 @@ function makeRequestForExercisesStory(visitID) {
 
 function drawGraph(differentValues) {
 	
-	$('#imgGoBack').off('click');
-	$('#imgGoBack').on('click', function() {
+	$('#imgGoBack').off('click')
+		.on('click', function() {
 		
-		$('#graphContainer h2, #graphContainer h3, #graphContainer img').remove();
-		$('#divBackButtonContainer, #graphContainer').fadeOut('fast', function() {
-			$('#imgPreloaderMiddle').fadeIn('fast', function() {
-				drawTable(false);	
+			$('#graphContainer header').remove();
+			$('#graphContainer').fadeOut('fast', function() {
+				$('#imgPreloaderMiddle').fadeIn('fast', function() {
+					drawTable(false);	
+				});
 			});
 		});
-	});
 	
 	if (differentValues) {
 		
 		if ($('#divGrafo').length == 0) {
 			$('<div>').attr('id', 'graphContainer').appendTo('#divTableContainer');
+			$('<header>').addClass('alignCenter').appendTo('#graphContainer');
+
 			$('<div>').attr('id', 'divGrafo').appendTo('#graphContainer');
 			$('#divGrafo').height(getScreenHeight() * 0.5);
 			
@@ -439,29 +426,21 @@ function drawGraph(differentValues) {
 				
 				if (patientVisits[index].IS_AT_HOME == true) {
 					$('<img>').attr('alt', 'Esercizio a casa').attr('src', 'images/home.png')
-						.prependTo('#graphContainer');
+						.appendTo('#graphContainer header');
 				}
 				else {
 					$('<img>').attr('alt', 'Esercizio in ospedale').attr('src', 'images/hospital.png')
-						.prependTo('#graphContainer');
+						.appendTo('#graphContainer header');
 				}
 				
-				$('#graphContainer img').css({
-					width: '2.0em',
-					'vertical-align': 'bottom'
-				});
-				
-				$('<h2>').text(patientVisits[index].DATE).css({
-						display: 'inline',
-						'margin-left': '0.3em'
-					}).insertBefore('#divGrafo');
+				$('<h2>').text(patientVisits[index].DATE)
+					.appendTo('#graphContainer header');
 				
 				$('<h3>').text('Valutazione Vista: ' + patientVisits[index].EYE_EVAL + 
-						" - Valutazione Tocco: " + patientVisits[index].TOUCH_EVAL)
-						.insertBefore('#divGrafo');
+					" - Valutazione Tocco: " + patientVisits[index].TOUCH_EVAL)
+					.appendTo('#graphContainer header');
 			}
 		}
-		
 		
 		deltaTouch = [];
 		deltaEye = [];
@@ -533,10 +512,8 @@ function drawGraph(differentValues) {
 			touchPositions[time] = new Point(touchPos[0], touchPos[1]);
 			
 			var eyesPos = objectInfo.EYES_POS;
-			eyesPositions[time] = new Point(eyesPos[0], eyesPos[1]);
-			
+			eyesPositions[time] = new Point(eyesPos[0], eyesPos[1]);	
 		}
-		
 	}
 	
 	$('#imgPreloaderMiddle').fadeOut('normal', function() {
@@ -610,7 +587,7 @@ function drawHelpMeReport(differentValues) {
 				.prependTo(dataTerm).on('click', moreDetails);
 			
 			var dd = $('<dd>').css('display', 'none').appendTo(list);
-			var table = $('<table>').appendTo(dd);
+			var table = $('<table>').addClass('alignCenter').appendTo(dd);
 			$('<thead>').appendTo(table);
 			var row = $('<tr>').addClass('ui-widget-header').appendTo(table);
 			$('<th>').text('Nome Oggetto').appendTo(row);
@@ -625,8 +602,10 @@ function drawHelpMeReport(differentValues) {
 			var totalCorrect = 0;
 			var totalIncorrect = 0;
 			
-			var yesImage = $('<img>').attr('src', '../images/correct.png').addClass('imageAnswer');
-			var noImage = $('<img>').attr('src', '../images/incorrect.png').addClass('imageAnswer');
+			var yesImage = $('<img>').attr('src', '../images/correct.png')
+				.addClass('imageAnswer');
+			var noImage = $('<img>').attr('src', '../images/incorrect.png')
+				.addClass('imageAnswer');
 			
 			
 			for (var index in listOfExercises) {
@@ -640,22 +619,30 @@ function drawHelpMeReport(differentValues) {
 				var row = $('<tr>').appendTo(table);
 				$('<td>').text(objectName).appendTo(row);
 				if (isTarget == "true") {
-					$('<img>').attr('src', '../images/correct.png').addClass('imageAnswer')
-						.attr('alt', 'Oggetto target').appendTo($('<td>').appendTo(row));
+					$('<img>').attr('src', '../images/correct.png')
+						.addClass('imageAnswer')
+						.attr('alt', 'Oggetto target').appendTo(
+							$('<td>').appendTo(row));
 				}
 				else {
-					$('<img>').attr('src', '../images/incorrect.png').addClass('imageAnswer')
-						.attr('alt', 'Oggetto non target').appendTo($('<td>').appendTo(row));
+					$('<img>').attr('src', '../images/incorrect.png')
+						.addClass('imageAnswer')
+						.attr('alt', 'Oggetto non target').appendTo(
+							$('<td>').appendTo(row));
 				}
 				$('<td>').text(frt).appendTo(row);
 				$('<td>').text(ct).appendTo(row);
 				if (rightAnswer == "true") {
-					$('<img>').attr('src', '../images/correct.png').addClass('imageAnswer')
-						.attr('alt', 'Risposta corretta').appendTo($('<td>').appendTo(row));
+					$('<img>').attr('src', '../images/correct.png')
+						.addClass('imageAnswer')
+						.attr('alt', 'Risposta corretta').appendTo(
+							$('<td>').appendTo(row));
 				}
 				else {
-					$('<img>').attr('src', '../images/incorrect.png').addClass('imageAnswer')
-						.attr('alt', 'Risposta corretta').appendTo($('<td>').appendTo(row));
+					$('<img>').attr('src', '../images/incorrect.png')
+						.addClass('imageAnswer')
+						.attr('alt', 'Risposta corretta').appendTo(
+							$('<td>').appendTo(row));
 				}
 				
 				totalFRT += frt;
@@ -680,7 +667,6 @@ function drawHelpMeReport(differentValues) {
 			
 			$('#listExercises, #divBackButtonContainer').fadeIn();
 		});
-		
 	}
 	else {
 		$('#imgPreloaderMiddle').fadeOut('normal', function() {
@@ -688,22 +674,10 @@ function drawHelpMeReport(differentValues) {
 			$('#listExercises, #divBackButtonContainer').fadeIn();
 		});
 	}
-	
 }
 
 $('document').ready(function() {
 	
-	
-	$('<div>').attr('id', 'divChooseOptions').appendTo('#divMainContent');
-	$('<table>').attr('id', 'tableSelectOptions').appendTo('#divChooseOptions');
-	
-	var row = $('<tr>').appendTo('#tableSelectOptions');
-	$('<label>').attr('for', 'selectPatient')
-		.text('Seleziona paziente: ').addClass('label')
-		.appendTo($('<td>').addClass('alignRight').appendTo(row));
-	
-	$('<select>').attr('id', 'selectPatient').attr('name', 'selectPatient')
-	.appendTo($('<td>').appendTo(row));
 	$('#selectPatient').change(function() {
 		
 		if ($('#divTableContainer').children().length > 0) {
@@ -712,28 +686,10 @@ $('document').ready(function() {
 		// far entrare loader middle
 		savePatientVisits($(this).val());
 	});
-	$('<option>').attr('value', '').text(' - - - ').appendTo('#selectPatient');
-	$('<img>').attr('id', 'imgPreloaderPatients').attr('src', '../images/preloader.gif')
-		.attr('alt', 'In Attesa').appendTo($('<td>').appendTo(row));
+	
+	$('#formSelectDetailsToShow input:checkbox').change(function() {
 		
-	var div = $('<div>').attr('id', 'divCheckboxExercises')
-		.addClass('alignLeft').appendTo('#divChooseOptions');
-		
-	$('<input>').attr('type', 'checkbox').attr('name', 'homeExercises')
-		.val('homeExercises').attr('id', 'homeExercises').appendTo(div);
-	$('<label>').attr('for', 'homeExercises').text('Visualizza esercizi svolti a casa').appendTo(div);
-	
-	$('<br />').appendTo(div);
-	
-	$('<input>').attr('type', 'checkbox').attr('name', 'visitExercises')
-		.val('visitExercises').attr('id', 'visitExercises').appendTo(div);
-	$('<label>').attr('for', 'visitExercises').text('Visualizza esercizi svolti nello studio medico').appendTo(div);
-	
-	$('#divChooseOptions #divCheckboxExercises input:checkbox').attr('checked', 'checked');
-	
-	$('#divChooseOptions #divCheckboxExercises input:checkbox').change(function() {
-		
-		if ($('#divChooseOptions #divCheckboxExercises input[name=homeExercises]').attr('checked') == "checked") {
+		if ($('#formSelectDetailsToShow input[name="homeExercises"]').attr('checked') == "checked") {
 			$('#tableVisitsCatchMe tr td[class=home], #tableVisitsHelpMe tr td[class=home]').parent('tr')
 				.fadeIn('fast');
 		}
@@ -742,7 +698,7 @@ $('document').ready(function() {
 				.fadeOut('fast');
 		}
 		
-		if ($('#divChooseOptions #divCheckboxExercises input[name=visitExercises]').attr('checked') == "checked") {
+		if ($('#formSelectDetailsToShow input[name=visitExercises]').attr('checked') == "checked") {
 			$('#tableVisitsCatchMe tr td[class=hospital], #tableVisitsHelpMe tr td[class=hospital]').parent('tr')
 				.fadeIn('fast');
 		}
@@ -750,13 +706,6 @@ $('document').ready(function() {
 			$('#tableVisitsCatchMe tr td[class=hospital], #tableVisitsHelpMe tr td[class=hospital]').parent('tr')
 				.fadeOut('fast');
 		}
-		
-		setTimeout(function() {
-			updateRowsColorTable($('#tableVisitsCatchMe'));
-			updateRowsColorTable($('#tableVisitsHelpMe'));	
-		}, 300);
-		
-		
 	});
 	
 	$.ajax({
@@ -776,24 +725,13 @@ $('document').ready(function() {
 					listOfPatients[patient.ID] = name;
 					$('<option>').attr('value',patient.ID).text(name).appendTo('#selectPatient');
 				}
-				
-				$('#imgPreloaderPatients').hide();
 			}	
 		}
 	});
 	
-	row = $('<tr>').appendTo('#tableSelectOptions');
-	
-	$('<label>').attr('for', 'selectGame').text('Seleziona gioco: ').addClass('label')
-		.appendTo($('<td>').addClass('alignRight').appendTo(row));
-	
-	$('<select>').attr('id', 'selectGame').attr('name', 'selectGame')
-		.appendTo($('<td>').appendTo(row));
-	
 	$('#selectGame').change(function() {
 		
 		var value = $(this).val();
-		
 		
 		$('#divTableContainer').children().fadeOut('normal').promise().done(function() {
 			if (value == "") {
@@ -806,41 +744,19 @@ $('document').ready(function() {
 				$('#tableVisitsHelpMe').fadeIn();
 			}			
 		});
-		
 	});
-	$('<option>').val('').text(' - - - ').appendTo('#selectGame');
-	$('<option>').val('catchMe').text('Prendimi!').appendTo('#selectGame');
-	$('<option>').val('helpMe').text('Aiutami!').appendTo('#selectGame');
-	
-	var container = $('<p>').insertBefore('#divChooseOptions')
-		.css({
-			width: '30%',
-			'text-align': 'left',
-			'margin-left': '5%'
-		});
-	
-	$('<img>').attr('id', 'imgGoBack').attr('src', '../images/tasto_indietro.png')
-		.attr('alt', 'Torna indietro').appendTo(container)
-		.css({
-			cursor: 'pointer',
-			width: '40%'
-		})
-		.on('click', function() {
-			location.replace('../index.html');
-		});
-	
 });
 
 function moreDetails() {
 	$(this).parent().next('dd').fadeIn();
 	$(this).attr('src', '../images/less_details.png');
-	$(this).off('click');
-	$(this).on('click', lessDetails);
+	$(this).off('click')
+		.on('click', lessDetails);
 }
 
 function lessDetails() {
 	$(this).parent().next('dd').fadeOut();
 	$(this).attr('src', '../images/show_more.png');
-	$(this).off('click');
-	$(this).on('click', moreDetails);
+	$(this).off('click')
+		.on('click', moreDetails);
 }

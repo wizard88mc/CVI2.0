@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"game",
+				"gameManager"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"exer",
+				"exerciseID"
+			],
+			[
+				"exerc",
+				"exercisesToSend"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"pack",
+				"packetNoTracker"
+			],
+			[
+				"toolti",
+				"tooltipObject"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"gameI",
+				"gameID"
+			],
+			[
+				"arrayOfGa",
+				"arrayOfGamesIdentifications"
+			],
+			[
+				"on",
+				"onmessage"
+			],
+			[
+				"webs",
+				"websocket"
+			],
+			[
+				"patient",
+				"patientID"
+			],
+			[
 				"patien",
 				"patientID"
 			],
@@ -34,10 +94,6 @@
 			[
 				"valueFor",
 				"valueForDeltaEyes"
-			],
-			[
-				"paddin",
-				"padding-bottom"
 			],
 			[
 				"paddi",
@@ -72,10 +128,6 @@
 				"background-color"
 			],
 			[
-				"margin",
-				"margin-bottom"
-			],
-			[
 				"th",
 				"thead	Tag"
 			]
@@ -84,59 +136,19 @@
 	"buffers":
 	[
 		{
-			"file": "doctor/watchHelpMe.html",
+			"file": "doctor/style/new_visit.css",
 			"settings":
 			{
-				"buffer_size": 2589,
+				"buffer_size": 1892,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "doctor/js/watchHelpMe.js",
+			"file": "catchMe/js/catchMe.js",
 			"settings":
 			{
-				"buffer_size": 16475,
+				"buffer_size": 51288,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "doctor/watchCatchMe.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "doctor/new_visit.html",
-			"settings":
-			{
-				"buffer_size": 4249,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "doctor/js/HelpMeSettings.js",
-			"settings":
-			{
-				"buffer_size": 25378,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "doctor/js/nuovavisita.js",
-			"settings":
-			{
-				"buffer_size": 11151,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/Utilities.js",
-			"settings":
-			{
-				"buffer_size": 6184,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -164,14 +176,49 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/HelpMeSettings.js",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/js/TickerObjects.js",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/js/ObjectImage.js",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/js/GameObjects.js",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/js/TouchEventsManager.js",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/style/style.css",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/watchHelpMe.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/watchHelpMe.css",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/nuovavisita.js",
+		"/C/wamp/htdocs/CVI/HTML/catchMe/style/catchMe.css",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/CatchMeSettings.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/watchCatchMe.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/settingsCatchMe.css",
+		"/C/wamp/htdocs/CVI/HTML/style/baseStyle.css",
+		"/C/wamp/htdocs/CVI/HTML/js/TrainingManager.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/watchCatchMe.css",
+		"/C/wamp/htdocs/CVI/HTML/server/GetPatientVisits.php",
+		"/C/wamp/htdocs/CVI/HTML/server/AddNewPatient.php",
+		"/C/wamp/htdocs/CVI/HTML/catchMe/settings/images.xml",
+		"/C/wamp/htdocs/CVI/HTML/doctor/js/graphsettings.js",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/settings/images.xml",
+		"/C/wamp/htdocs/CVI/HTML/doctor/watchCatchMe.html",
+		"/C/wamp/htdocs/CVI/HTML/js/Utilities.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/watchHelpMe.html",
+		"/C/wamp/htdocs/CVI/HTML/doctor/new_visit.html",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/index.css",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/watchexam.css",
+		"/C/wamp/htdocs/CVI/HTML/helpMe/js/HelpMe.js",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/settingsHelpMe.css",
+		"/C/wamp/htdocs/CVI/HTML/doctor/style/new_visit.css",
+		"/C/wamp/htdocs/CVI/HTML/server/GetGameSettingsHelpMe.php",
+		"/C/wamp/htdocs/CVI/HTML/patient/js/index.js",
+		"/C/wamp/htdocs/CVI/HTML/patient/index.html",
+		"/C/wamp/htdocs/CVI/HTML/server/GetGamesList.php",
 		"/C/wamp/htdocs/CVI/HTML/js/index.js",
+		"/C/wamp/htdocs/CVI/HTML/index.html",
+		"/C/wamp/htdocs/CVI/HTML/catchMe/js/catchMe.js",
 		"/C/wamp/htdocs/CVI/HTML/style/base.css",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/38/2015-12-17-15-37-554/Results.txt",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/InputEyeTracking.txt",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/InputImage.txt",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/GameSpecs.ini",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/40/2015-12-17-16-11-556/InputTouch.txt",
-		"/C/wamp/htdocs/CVI/HTML/catchMe/settings/images.xml",
 		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/Utils.cgi",
 		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/formFilm.cgi",
 		"/C/Users/Matteo/Dropbox/laboratori tecweb/lab2015/lab5/cgi-bin/film.cgi",
@@ -197,7 +244,6 @@
 		"/C/Users/Matteo/workspace/iWildSenseStress/src/ch/qol/unige/iwildsensestress/notification_manager/AlarmFinalQuestionnaireManager.java",
 		"/C/Users/Matteo/workspace/iWildSenseStress/src/ch/qol/unige/iwildsensestress/notification_manager/AllAlarmsManager.java",
 		"/C/wamp/htdocs/CVI/HTML/server/GetGraphData.php",
-		"/C/wamp/htdocs/CVI/HTML/doctor/js/graphsettings.js",
 		"/C/wamp/htdocs/CVI/HTML/doctor/js/gestionepazienti.js",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/12/2015-6-17-9-26-503/DeltaValues.txt",
 		"/C/wamp/htdocs/CVI/HTML/server/WebsocketServer/archivio_visite/13/2015-6-17-10-5-505/GameSpecs.ini",
@@ -257,41 +303,7 @@
 		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/editProfile.cgi",
 		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/functions.pm",
 		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/HTMLGenerator.pm",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/login.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/load.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/marketManager.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/newsManager.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/search.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/register.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/public_html/js/functions.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/5NuovoLavoro-fcarnova/cgi-bin/elimina_annuncio.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/modificheImpasti.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/inserisciPizza.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/impasti.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/modifichePizze.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/4crazypizza-ftodesca/cgi-bin/pizze.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/registration_control.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/commentsLoad.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/cookie_control.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/js/pass_control.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/3AlpagoTeam-mmunaro/htdocs/desk.css",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/js/controlloForm.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/2roger-iparise/public_html/Js/trova.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/2roger-iparise/public_html/Js/abbandono.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/js/functions.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/cgi-bin/gestisciProfilo.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/cgi-bin/cambiaVoceProfilo.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/css/style_v3.css",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/1Timeout-fpavanel/public_html/css/style_v2-1.css",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/cgi-bin/aggiungiFotocamera.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/cgi-bin/paginaUtente.cgi",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/cgi-bin/cancellaUtente.cgi",
-		"/C/Users/Matteo/NetBeansProjects/iWildSenseStressAnalyzer/data/survey_data/351565052265664_survey_events.csv",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/validazioneAnnuncio.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/validazioneRegistrazione.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/Amministrazione.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/vazzoler/public_html/js/checkLogged.js",
-		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/5BugBusters/public_html/js/script.js"
+		"/C/Users/Matteo/Dropbox/laboratori tecweb/progetti/6Webtooners-ndallaco/cgi-bin/login.cgi"
 	],
 	"find":
 	{
@@ -306,9 +318,84 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"packet",
+			"moveObjectInto",
+			"moveInsideSacco",
+			"animations",
+			"GameSettings",
+			"levelsToPerf",
+			"defineSingleAnimation",
+			"repetitionsOfMo",
+			"deleteLevel",
+			"changeMo",
+			"numberRepetitions",
+			"functionSelectRepetitions",
+			"buildDialogChangeBackgroundColor",
+			"functionSelectRepetitions",
+			"createNewExerciseEditer",
+			"allExercisesCompleted",
+			"gameInAction",
+			"waitingToStart",
+			"trainingCom",
+			"GAME_I",
+			"tooltipO",
+			"screenWi",
+			"screenWidth",
+			"startTraining",
+			"prepareChart",
+			"trainingC",
+			"trainingComplete",
+			"buildAnimations",
+			"defineGame",
+			"gameIdenti",
+			"personalizationComplete",
+			"Comincia",
+			"buildDialogChangeSpeed",
+			"modifica velo",
+			"buttons",
+			"divB",
+			"changeBack",
+			"divChangeB",
+			"titleEx",
+			"presentation",
+			"collectLevelsToSend",
+			"presentationComplete",
+			"divLe",
+			"{\n",
+			"gameID",
+			"gameId",
+			"CATCH_ME",
+			"main",
+			"START_G",
+			"mainC",
+			"prepareC",
+			"collectLevelsToSend",
+			"main",
+			"prepareTable",
+			"screenPreview",
+			"gameID",
+			"errors",
+			"updateErr",
+			"updateErrors",
+			"Errori",
+			"buttons",
+			"patientID",
+			"port",
+			"name",
+			"select",
+			"gameIdentification",
+			"checkEverythingReady",
+			"divBu",
+			"checkLo",
+			"css",
+			"buttons",
+			"				\n",
+			"gameFolder",
+			"helpMeGameSteps",
+			" {",
 			"gameID",
 			"gameReady",
 			"patientID",
@@ -361,50 +448,7 @@
 			"STAIR_DOWNSTAIRS",
 			"STAIR_UPSTAIRS",
 			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"1)",
-			"6.6729751831309E13",
-			"xml",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"STAIR_UPSTAIRS",
-			"STAIR_DOWNSTAIRS",
-			"text-"
+			"STAIR_UPSTAIRS"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -431,23 +475,24 @@
 			[
 				{
 					"buffer": 0,
-					"file": "doctor/watchHelpMe.html",
+					"file": "doctor/style/new_visit.css",
 					"settings":
 					{
-						"buffer_size": 2589,
+						"buffer_size": 1892,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1703,
-								1703
+								273,
+								273
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -457,98 +502,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "doctor/js/watchHelpMe.js",
+					"file": "catchMe/js/catchMe.js",
 					"settings":
 					{
-						"buffer_size": 16475,
+						"buffer_size": 51288,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								550,
-								550
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "doctor/watchCatchMe.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "doctor/new_visit.html",
-					"settings":
-					{
-						"buffer_size": 4249,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2367,
-								2367
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 702.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "doctor/js/HelpMeSettings.js",
-					"settings":
-					{
-						"buffer_size": 25378,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								12922,
+								12922
 							]
 						],
 						"settings":
@@ -561,65 +526,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "doctor/js/nuovavisita.js",
-					"settings":
-					{
-						"buffer_size": 11151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								296,
-								296
-							]
-						],
-						"settings":
-						{
-							"rulers":
-							[
-								80
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/Utilities.js",
-					"settings":
-					{
-						"buffer_size": 6184,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								769,
-								784
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 7362.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

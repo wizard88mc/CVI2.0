@@ -344,8 +344,7 @@ var TrainingExamplesNamespace = {
 			 * POINTS[n] = "X;Y" coordinates of a point
 			 */ 
 			
-			for (var i = 0; i < data.POINTS.length; i++)
-			{
+			for (var i = 0; i < data.POINTS.length; i++) {
 				
 				var elements = data.POINTS[i].split(";");
 				var centerToDraw = new Point(Number(elements[1].replace(",", ".")), 
@@ -370,8 +369,7 @@ var TrainingExamplesNamespace = {
 			
 			soundNemoPresentation.get(0).play();
 		}
-		else if (data.TYPE == "START_TRAINING") 
-		{
+		else if (data.TYPE == "START_TRAINING") {
 			console.log("MESSAGE START TRAINING");
 			var timeToStart = data.START_TIME;
 			
@@ -462,9 +460,6 @@ var TrainingManager = {
 			//width: 'auto',
 			buttons: {
 				"Inizia": function() {
-
-					$(this).dialog("close");
-					$(this).remove();
 						
 					var numberOfPoints = $('select#selectNumberOfPoints').val();
 					var totalSeconds = $('select#selectTimePerPoint').val();
@@ -480,6 +475,9 @@ var TrainingManager = {
 					};
 						
 					websocket.send(JSON.stringify(packetWithSettings));
+
+					$(this).dialog("close");
+					$(this).remove();
 						
 					var dialog = $('<div>').attr('id', 'dialogWaitingCompleteTraining')
 						.attr('title', 'Attendere ...').appendTo('#mainContent');

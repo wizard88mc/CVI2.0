@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8" />
+	<meta charset="utf-8" />
 
-<title>Gestione Pazienti</title>
-<meta name="description" content="" />
-<meta name="author" content="Matteo Ciman" />
+	<title>Gestione Pazienti - CVI</title>
+	<meta name="description" content="Pagina per la gestione dei bambini e la visualizzazione dei loro risultati nei vari giochi" />
+	<meta name="author" content="Università degli Studi di Padova" />
 
-<link rel="stylesheet" href="../style/baseStyle.css" />
-<link rel="stylesheet" href="style/gestionepazienti.css" />
-<link rel="stylesheet" href="../style/custom-theme/jquery-ui.min.css" />
-<link rel="stylesheet" href="../style/custom-theme/jquery-ui.structure.min.css" />
-<link rel="stylesheet" href="../style/custom-theme/jquery-ui.theme.min.css" />  
-<link rel="stylesheet" href="../style/jquery.slider.min.css" />
+	<link rel="stylesheet" href="../style/custom-theme/jquery-ui.min.css" />
+	<link rel="stylesheet" href="../style/custom-theme/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" href="../style/custom-theme/jquery-ui.theme.min.css" />  
+	<link rel="stylesheet" href="../style/jquery.slider.min.css" />
+	<link rel="stylesheet" href="../style/baseStyle.css" />
+	<link rel="stylesheet" href="style/gestionepazienti.css" />
 
-<script src="../js/jquery-1.7.2.min.js"></script>
-<script src="../js/jquery-ui.min.js"></script>
-<script src="../js/Utilities.js"></script>
-<script src="../js/WebSocketManager.js"></script>
-<script src="../js/flot/jquery.flot.min.js"></script>
-<script src="../js/flot/jquery.flot.navigate.min.js"></script>
-<script src="../js/flot/jquery.flot.axislabels.js"></script>
-<script src="js/graphsettings.js"></script>
-<script src="../js/jquery.slider.min.js" ></script>
-<script src="js/gestionepazienti.js"></script>
-<script src="https://www.google.com/jsapi" type="text/javascript"></script>
-
-
+	<script src="../js/jquery-1.7.2.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/Utilities.js"></script>
+	<script src="../js/WebSocketManager.js"></script>
+	<script src="../js/flot/jquery.flot.min.js"></script>
+	<script src="../js/flot/jquery.flot.navigate.min.js"></script>
+	<script src="../js/flot/jquery.flot.axislabels.js"></script>
+	<script src="js/graphsettings.js"></script>
+	<script src="../js/jquery.slider.min.js" ></script>
+	<script src="js/gestionepazienti.js"></script>
+	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
 </head>
 
 <body>
-<div id="divMainContent" class="ui-corner-all">
-	<h1 class="ui-widget-header">Gestione Pazienti</h1>
+	<header id="header" class="alignCenter">
+		<img id="logoLeft" src="../images/logo_unipd.png" alt="Logo Università di Padova" />
+		<img id="logoRight" src="../images/logo_unipd.png" alt="Logo Università di Padova" />
+		<h1>Cerebral Visual Impairment</h1>
+		<h2>A project from the University of Padua, Italy</h2>
+	</header>
+
+	<div id="mainContent" class="ui-corner-all">
+		<header>
+			<h2>Gestione Pazienti</h2>
+			<img id="imgGoBack" src="../images/tasto_indietro.png" alt="Torna indietro" />
+		</header>
 	
-</div>
+		<form id="formSelectDetailsToShow" class="alignCenter">
+			<label for="selectPatient">Seleziona bambino: </label>
+			<select name="selectPatient" id="selectPatient">
+				<option></option>
+			</select><br />
+			<label for="selectGame">Seleziona gioco: </label>
+			<select name="selectGame" id="selectGame">
+				<option></option>
+				<option val="catchMe">Prendimi!</option>
+				<option val="helpMe">Aiutami!</option>
+			</select><br />
+			<input type="checkbox" name="homeExercises" id="homeExercises" checked="checked" />
+			<label for="homeExercises">Visualizza esercizi svolti a casa</label><br />
+			<input type="checkbox" name="visitExercises" id="visitExercises" checked="checked" />
+			<label for="visitExercises">Visualizza esercizi svolti nello studio medico</label>
+		</form>
+	</div>
+	<footer>
+		<p class="italic">University of Padua, Italy - All Rigths Reseverd &copy; 2015</p>
+		<p>With the collaboration of the <em>Department of Mathematics</em>, the <em>Department of Developmental Psychology and Socialisation</em>, the <em>University Centre for Research and Services on Rehabilitation and Inclusion</em> and the <em>Pediatric Low Vision Centre of the Veneto Region, Department of Women's and Children's Health</em>.</p>
+	</footer>
 </body>
 </html>

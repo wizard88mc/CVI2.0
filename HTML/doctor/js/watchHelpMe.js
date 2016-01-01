@@ -588,12 +588,17 @@ $('document').ready(function() {
 	$('#imgGoBack').off('click');
 	$('#imgGoBack').on('click', function() {
 
-			// invio pacchetto x dire di tornare indietro
-		var packet = {
-			TYPE: 'GO_BACK'
-		};
-		
-		websocket.send(JSON.stringify(packet));
+		// invio pacchetto x dire di tornare indietro
+		if (websocket != null) {
+			var packet = {
+				TYPE: 'GO_BACK'
+			};
+			
+			websocket.send(JSON.stringify(packet));
+
+			websocket.close();
+			websocket = null;
+		}
 		
 		$('#mainContent div, #mainContent table').remove();
 		imagesFamily = new Object();
@@ -603,8 +608,6 @@ $('document').ready(function() {
 		familySound = new Object();
 		divTabs = null;
 
-		websocket.close();
-		
 		location.replace('new_visit.html');
 	});
 

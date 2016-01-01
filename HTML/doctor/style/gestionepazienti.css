@@ -2,63 +2,69 @@ html {
 	overflow-y: scroll;
 }
 
-#divMainContent {
-	text-align: center;
-	font-size: 1.1em;	
-	background-color: #FFF;
-	margin: auto;
-	max-width: 1024px;
-	background-color: #FFF;	
-	margin-top: 0em;
-	padding-bottom: 3.0em;
+#mainContent > header {
+	padding-top: 1.0em;
+	min-height: 2.0em;
+	padding-bottom: 2.0em;
 }
 
-#divMainContent h1 {
-	margin: 0;
-	height: 100%;
-	padding: 0.5em;
-	margin-bottom: 1.0em;
-}
-
-#divChooseOptions {
-	font-size: 1.2em;
+#mainContent > header h2 {
+	font-size: 1.8em;
+	float: left;
 	width: 50%;
+	margin-left: 25%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#formSelectDetailsToShow {
 	margin: auto;
+	width: 80%;
 }
 
-#divChooseOptions img {
-	width: 5%;
-	vertical-align: middle;
-	margin-left: 1.0em;
-	
+label, input, select {
+	display: inline-block;
 }
 
-#divChooseOptions table {
-	margin: auto;
-	width: 90%;
+label {
+	width: 30%;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.0em;
 }
 
-#divChooseOptions #divCheckboxExercises {
-	margin-top: 0.5em;
+label + input, label + select {
+	width: 40%;
+	margin: 0 10% 0 4%;
 }
 
-#divChooseOptions #divCheckboxExercises label {
-	font-size: 0.8em;
+input + input, input + select {
+	float: right;
+}
+
+label[for="homeExercises"], label[for="visitExercises"] {
+	width: 50%;
+	text-align: left;
+	font-weight: normal;
 	padding-left: 0.5em;
 }
 
 #selectPatient, #selectGame {
-	width: 95%;
+	width: 30%;
 	height: 1.7em;
 	margin-left: 1.0em;
-	font-size: 0.6em;
+	font-size: 0.8em;
+	margin-bottom: 0.7em;
 	vertical-align: middle;
+}
+
+#selectGame {
+	margin-bottom: 1.0em;
 }
 
 .alignRight {
 	text-align: right;
 }
-
 
 #divTableContainer {
 	margin-top: 4%;
@@ -70,6 +76,11 @@ html {
 	font-size: 1.0em;
 }
 
+#imgPreloaderMiddle {
+	display: block;
+	margin: auto;
+}
+
 #tableVisitsCatchMe, #tableVisitsHelpMe {
 	margin: auto;
 	width: 90%;
@@ -77,6 +88,7 @@ html {
 	border-color: #305071;
 	border-style: inset;
 	border-collapse: collapse;
+	background-color: #FFF;
 }
 
 #tableVisitsCatchMe thead th, #tableVisitsHelpMe thead th {
@@ -106,6 +118,10 @@ html {
 	margin-bottom: 2em;
 }
 
+table tr:nth-child(odd) {
+	background-color: #D3D3D3;
+}
+
 caption {
 	width: 50%;
 	margin: auto;
@@ -113,7 +129,6 @@ caption {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	border-bottom: none;
-	
 }
 
 table .smallColumn {
@@ -133,6 +148,21 @@ table .smallColumn {
 	margin: auto;
 	padding: 0.5em;
 	display: none;
+}
+
+#graphContainer header {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+#graphContainer header img {
+	width: 2.0em;
+	vertical-align: middle;
+}
+
+#graphContainer header h2 {
+	display: inline;
+	margin-left: 0.3em;
 }
 
 #divGrafo {
@@ -155,7 +185,7 @@ table .smallColumn {
 	cursor: pointer;
 }
 
-dt {
+#listExercises dt {
 	margin-top: 1.0em;
 	text-align: left;
 	margin-left: 1.5em;
@@ -164,37 +194,38 @@ dt {
 	font-weight: bold;
 }
 
-dt img {
+#listExercises dt img {
 	width: 4%;
 	vertical-align: middle;
 	margin-right: 1.0em;
 	cursor: pointer;
 }
 
-dd {
+#listExercises dd {
 	margin-left: 2.0em;
 }
 
-dd table {
+#listExercises dd table {
 	width: 70%;
 	margin-left: 1.0em;
 	border-width: 0.1em;
 	border-color: #305071;
 	border-style: inset;
 	border-collapse: collapse;
+	background-color: #FFF;
 }
 
-dd table th {
+#listExercises dd table th {
 	padding: 0.3em;
 }
 
-dd table th, dd table td {
+#listExercises dd table th, dd table td {
 	border-width: 0.1em;
 	border-style: inset;
 	border-color: #096AC8;
 }
 
-dd table td {
+#listExercises dd table td {
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
 }
@@ -207,4 +238,3 @@ table.smallerColumn {
 	width: 15%;
 	vertical-align: center;
 }
-
